@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
-    <!-- GitHub Auto Update (Cache Busting) Meta Tags -->
+    <!-- GitHub Auto Update -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
@@ -14,7 +14,7 @@
     <!-- Firebase SDK v8 -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
-    
+
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -22,20 +22,21 @@
     <style>
         html, body { font-family: 'Hind Siliguri', sans-serif; background-color: #f4f5f7; margin: 0; padding: 0; overflow-x: hidden; width: 100%; touch-action: pan-y; }
         
-        .school-header { background-color: #1a7844; color: white; padding: 25px 15px; text-align: center; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        .app-header-blue { background-color: #1976d2; color: white; padding: 20px 15px; text-align: center; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        .app-header-red { background-color: #d32f2f; color: white; padding: 20px 15px; text-align: center; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        .app-header-green { background-color: #1a7844; color: white; padding: 20px 15px; text-align: center; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        .app-header-purple { background-color: #9c27b0; color: white; padding: 20px 15px; text-align: center; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .school-header { background-color: #1a7844; color: white; padding: 25px 15px; text-align: center; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); position: relative;}
+        .app-header-blue { background-color: #1976d2; color: white; padding: 20px 15px; text-align: center; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); position: relative;}
+        .app-header-red { background-color: #d32f2f; color: white; padding: 20px 15px; text-align: center; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); position: relative;}
+        .app-header-green { background-color: #1a7844; color: white; padding: 20px 15px; text-align: center; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); position: relative;}
+        .app-header-purple { background-color: #9c27b0; color: white; padding: 20px 15px; text-align: center; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); position: relative;}
         
         .school-header img.logo { width: 75px; height: 75px; border-radius: 50%; background: white; margin-bottom: 10px; object-fit: cover; border: 2px solid #fff; padding: 2px; }
         .school-header h2 { font-weight: 700; font-size: 22px; margin-bottom: 5px; }
-        .school-header .mobile-text { color: #ffeb3b; font-size: 15px; font-weight: 700; letter-spacing: 0.5px; margin-top: 5px; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); }
+        .school-header .mobile-text { color: #ffeb3b; font-size: 15px; font-weight: 700; margin-top: 5px; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); }
 
         .notice-bar { background: linear-gradient(90deg, #F3B007 0%, #F9D423 100%); color: #5c3000; padding: 12px 15px; font-weight: 700; display: flex; align-items: center; font-size: 15px; box-shadow: 0 4px 10px rgba(243, 176, 7, 0.3); border-bottom: 2px solid #e0a800; margin-bottom: 15px;}
         
         .custom-card { background: white; border-radius: 10px; border: none; box-shadow: 0 4px 10px rgba(0,0,0,0.06); margin-bottom: 20px; }
         .border-left-blue { border-left: 6px solid #1976d2; }
+        .border-left-red { border-left: 6px solid #d32f2f; }
         .border-left-teal { border-left: 6px solid #1a7844; }
         .border-left-warning { border-left: 6px solid #f39c12; }
         .border-left-purple { border-left: 6px solid #9c27b0; }
@@ -45,15 +46,10 @@
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         
         .class-btn { border: 1px solid #ddd; background: white; padding: 10px; border-radius: 8px; text-align: center; font-weight: 600; color: #444; font-size: 14px; cursor: pointer; transition: 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.05);}
-        .class-btn:active { transform: scale(0.95); }
-
         .dash-cat-box { background: white; padding: 20px 10px; border-radius: 12px; text-align: center; box-shadow: 0 4px 8px rgba(0,0,0,0.05); cursor: pointer; border: 1px solid #eee; transition: 0.2s; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;}
-        .dash-cat-box:active { transform: scale(0.95); }
-        .dash-cat-box i { font-size: 30px; margin-bottom: 10px; }
-        .dash-cat-box h6 { font-weight: 700; margin: 0; color: #444; font-size: 14px; }
         
-        /* Photo Gallery */
-        .gallery-slider-container { position: relative; width: 100%; height: 220px; overflow: hidden; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); background: #000; margin: 0 auto 20px auto; }
+        /* Gallery Slider Fix */
+        .gallery-slider-container { position: relative; width: 100%; height: 220px !important; overflow: hidden; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); background: #000; margin: 0 auto 20px auto; }
         .gallery-slider-track { display: flex; height: 100%; transition: transform 0.5s ease-in-out; }
         .gallery-slide { min-width: 100%; height: 100%; object-fit: cover; }
         .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.6); color: white; border: none; width: 35px; height: 35px; border-radius: 50%; cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center; transition: 0.3s; }
@@ -73,49 +69,76 @@
         
         .profile-list .list-group-item { border: none; padding: 10px 0; border-bottom: 1px dashed #eee; font-size: 15px; text-align: left;}
 
-        #loadingOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f4f5f7; z-index: 10000; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.3s;}
+        /* Custom Modal */
+        .custom-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 9999; display: none; justify-content: center; align-items: center; backdrop-filter: blur(4px); }
+        .custom-modal-box { background: white; width: 90%; max-width: 330px; border-radius: 15px; overflow: hidden; text-align: center; }
+        
+        /* App Lock Banners */
+        #appLockOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #ffffff; z-index: 999999; display: none; flex-direction: column; justify-content: center; align-items: center; padding: 20px; text-align: center; }
+        #offlineBanner { display: none; background: #d32f2f; color: white; text-align: center; padding: 5px; font-size: 12px; font-weight: bold; position: fixed; top: 0; width: 100%; z-index: 99999; }
+        
+        /* Loader Settings */
+        #loadingOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f4f5f7; z-index: 10000; display: flex; flex-direction: column; justify-content: center; align-items: center;}
         .loader { border: 5px solid #f3f3f3; border-top: 5px solid #1976d2; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin-bottom: 15px; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        
-        /* Offline Banner */
-        #offlineBanner { display: none; background: #d32f2f; color: white; text-align: center; padding: 5px; font-size: 12px; font-weight: bold; position: fixed; top: 0; width: 100%; z-index: 99999; }
     </style>
 </head>
 <body>
 
-    <!-- Offline Notification -->
     <div id="offlineBanner"><i class="fas fa-wifi"></i> আপনি অফলাইনে আছেন। সেভ করা ডেটা দেখানো হচ্ছে।</div>
-
-    <!-- Loading Screen -->
     <div id="loadingOverlay"><div class="loader"></div><h5 class="fw-bold text-primary">ডেটা সিঙ্ক হচ্ছে...</h5></div>
 
-    <!-- Alert Modal (Dynamic) -->
-    <div id="customAlertOverlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 9999; display: none; justify-content: center; align-items: center;">
-        <div style="background: white; width: 90%; max-width: 330px; border-radius: 15px; overflow: hidden; text-align: center;">
-            <div style="padding: 18px; font-weight: bold; font-size: 18px; color: #1a7844;">বার্তা</div>
+    <!-- App Lock Overlay -->
+    <div id="appLockOverlay">
+        <i class="fas fa-lock text-danger mb-3" style="font-size: 60px;"></i>
+        <h3 class="fw-bold text-danger mb-2">সাবস্ক্রিপশনের মেয়াদ শেষ!</h3>
+        <p class="text-muted mb-4" id="lock_msg_display">অ্যাপের মেয়াদ শেষ হয়ে গেছে। অ্যাডমিনের সাথে যোগাযোগ করুন।</p>
+        <div class="card p-3 w-100 mb-4" style="background:#fefefe; border: 2px solid #d32f2f; border-radius:10px;">
+            <h6 class="fw-bold text-dark mb-1">বিকাশ/নগদ নাম্বার:</h6>
+            <h3 class="fw-bold text-danger mb-2" id="lock_number">01644234178</h3>
+            <h6 class="fw-bold text-dark mb-0">মাসিক ফি: <span id="lock_fee">৫০০</span> ৳</h6>
+        </div>
+        <button class="btn btn-outline-danger px-4 py-2 fw-bold" onclick="window.location.reload()"><i class="fas fa-sync-alt"></i> রিলোড করুন</button>
+    </div>
+
+    <!-- Alert Modal -->
+    <div id="customAlertOverlay" class="custom-modal-overlay">
+        <div class="custom-modal-box">
+            <div style="padding: 18px; font-weight: bold; font-size: 18px; color: #1976d2;">বার্তা</div>
             <div style="padding: 20px; font-size: 15px; color: #444;" id="customAlertMessage">মেসেজ</div>
-            <div style="border-top: 1px solid #f0f0f0;"><button onclick="closeAlert()" style="width: 100%; padding: 14px; background: transparent; border: none; font-weight: bold; font-size: 16px; cursor: pointer; color: #1a7844;">OK</button></div>
+            <div style="border-top: 1px solid #f0f0f0;"><button onclick="closeAlert()" style="width: 100%; padding: 14px; background: transparent; border: none; font-weight: bold; font-size: 16px; cursor: pointer; color: #1976d2;">OK</button></div>
+        </div>
+    </div>
+
+    <!-- Confirm Modal -->
+    <div id="customConfirmOverlay" class="custom-modal-overlay">
+        <div class="custom-modal-box" style="background:#fff3cd;">
+            <div style="padding: 18px; font-weight: bold; font-size: 18px; color: #856404;"><i class="fas fa-exclamation-triangle"></i> নিশ্চিত করুন</div>
+            <div style="padding: 20px; font-size: 15px; color: #444;" id="customConfirmMessage">আপনি কি নিশ্চিত?</div>
+            <div style="border-top: 1px solid #f0f0f0; display: flex;">
+                <button onclick="closeCustomConfirm()" style="flex:1; padding: 14px; background: transparent; border: none; font-weight: bold; border-right: 1px solid #f0f0f0; color:#6c757d;">Cancel</button>
+                <button id="customConfirmBtn" style="flex:1; padding: 14px; background: transparent; border: none; font-weight: bold; color:#d32f2f;">OK</button>
+            </div>
         </div>
     </div>
 
     <!-- ================= 1. TEACHER LOGIN ================= -->
     <div id="teacherLoginPage" class="page-view active">
-        <div class="school-header">
+        <div class="school-header" style="padding-top: 25px; padding-bottom: 25px;">
             <p class="bismillah">বিসমিল্লাহির রাহমানির রাহীম</p>
             <img src="logo.jpg" onerror="this.onerror=null; this.src='https://via.placeholder.com/80/ffffff/1a7844?text=Logo';" alt="Logo" class="logo">
             <h2>মরিয়ম ভাট মেমোরিয়াল একাডেমী</h2>
-            <p class="address">মিরগঞ্জ রোড ভাট মসজিদ ব্রীজ সংলগ্ন, মধ্য কেরোয়া, রায়পুর, লক্ষ্মীপুর।</p>
+            <p class="address" style="margin-bottom:0;">মিরগঞ্জ রোড ভাট মসজিদ ব্রীজ সংলগ্ন, মধ্য কেরোয়া, রায়পুর, লক্ষ্মীপুর।</p>
             <div class="mobile-text"><i class="fas fa-phone-alt me-1"></i> মোবাইল: ০১৭১৮-১১১৩০১ (অফিস), ০১৭৯০-২৩১৭৭৫</div>
         </div>
-        
         <div class="notice-bar mb-3"><i class="fas fa-bell fa-shake"></i><marquee id="homeNoticeText">ডেটাবেজ থেকে নোটিশ লোড হচ্ছে...</marquee></div>
 
         <div class="container px-3 mt-4 text-center pb-4">
-            <!-- Gallery Slider on Homepage -->
+            <!-- Gallery Slider (FIXED) -->
             <div class="gallery-slider-container mb-4" id="gallery_slider_wrapper">
                 <div class="gallery-slider-track" id="home_gallery_track"></div>
-                <button class="slider-btn prev" onclick="moveGallery(-1)"><i class="fas fa-chevron-left"></i></button>
-                <button class="slider-btn next" onclick="moveGallery(1)"><i class="fas fa-chevron-right"></i></button>
+                <button class="slider-btn prev" style="left:10px;" onclick="moveGallery(-1)"><i class="fas fa-chevron-left"></i></button>
+                <button class="slider-btn next" style="right:10px;" onclick="moveGallery(1)"><i class="fas fa-chevron-right"></i></button>
                 <div class="slider-dots" id="home_gallery_dots"></div>
             </div>
 
@@ -128,6 +151,7 @@
         </div>
     </div>
 
+
     <!-- ================= 2. TEACHER DASHBOARD ================= -->
     <div id="teacherDashboard" class="page-view">
         <div class="app-header-blue"><h2>শিক্ষক ড্যাশবোর্ড</h2><p>সহকারী শিক্ষক প্যানেল</p></div>
@@ -137,11 +161,9 @@
                 <div class="d-flex align-items-center">
                     <img src="" class="teacher-img-sm border-primary" id="dash_t_img">
                     <div class="ms-3"><h5 class="mb-0 fw-bold text-primary" id="dash_t_name_display">শিক্ষকের নাম</h5><small class="text-muted" id="dash_t_id_display">আইডি: T-xxx</small></div>
-                    <div class="ms-auto"><i class="fas fa-chevron-right text-muted"></i></div>
                 </div>
             </div>
 
-            <!-- Dynamic Search Area -->
             <h6 class="fw-bold text-secondary mb-2"><i class="fas fa-search"></i> শিক্ষার্থী খুঁজুন:</h6>
             <div class="card custom-card p-3 mb-4 shadow-sm">
                 <div class="input-group">
@@ -165,18 +187,10 @@
                 <div class="col-6"><div class="dash-cat-box" onclick="openOldAddStudent()" style="border-left: 4px solid #e67e22;"><i class="fas fa-user-check text-warning" style="color:#e67e22 !important;"></i><h6 class="mt-2">শিক্ষার্থী যুক্ত</h6></div></div>
                 
                 <div class="col-6"><div class="dash-cat-box" onclick="showPage('teacherResultUpdate')" style="border-left: 4px solid #1a7844;"><i class="fas fa-file-alt text-success"></i><h6 class="mt-2">রেজাল্ট আপডেট</h6></div></div>
-                <div class="col-6"><div class="dash-cat-box" onclick="showPage('teacherDirectory')" style="border-left: 4px solid #d32f2f;"><i class="fas fa-users text-danger"></i><h6 class="mt-2">শিক্ষক ও স্টাফ</h6></div></div>
+                <div class="col-6"><div class="dash-cat-box" onclick="showPage('teacherManageStudents')" style="border-left: 4px solid #d32f2f;"><i class="fas fa-list text-danger"></i><h6 class="mt-2">শিক্ষার্থী ম্যানেজ</h6></div></div>
                 
+                <div class="col-6"><div class="dash-cat-box" onclick="showPage('teacherDirectory')" style="border-left: 4px solid #1976d2;"><i class="fas fa-users text-primary"></i><h6 class="mt-2">স্কুল ডিরেক্টরি</h6></div></div>
                 <div class="col-6"><div class="dash-cat-box" onclick="showPage('teacherSmsOnly')" style="border-left: 4px solid #00bcd4;"><i class="fas fa-paper-plane text-info"></i><h6 class="mt-2">এসএমএস পাঠান</h6></div></div>
-                
-                <!-- NEW INBOX BOX -->
-                <div class="col-6"><div class="dash-cat-box" onclick="showPage('teacherInboxPage')" style="border-left: 4px solid #e91e63;">
-                    <div class="position-relative d-inline-block">
-                        <i class="fas fa-inbox text-danger" style="color:#e91e63 !important;"></i>
-                        <span id="inbox_badge" class="badge bg-danger position-absolute" style="top:-5px; right:-10px; display:none;">0</span>
-                    </div>
-                    <h6 class="mt-2">স্টুডেন্ট ইনবক্স</h6>
-                </div></div>
             </div>
 
             <h6 class="fw-bold text-secondary mb-2">শিক্ষার্থী তালিকা ও হাজিরা নিন:</h6>
@@ -195,20 +209,9 @@
         </div>
     </div>
 
-    <!-- ================= INBOX PAGE ================= -->
-    <div id="teacherInboxPage" class="page-view">
-        <div class="app-header-purple" style="background:#e91e63;"><h2>স্টুডেন্ট ইনবক্স</h2><p>শিক্ষার্থীদের মেসেজ</p></div>
-        <div class="container px-3 mt-4">
-            <button onclick="goBackToDashboard()" class="btn btn-sm btn-outline-secondary mb-3"><i class="fas fa-arrow-left"></i> ড্যাশবোর্ডে যান</button>
-            <div class="card custom-card border-left-purple p-3 shadow-sm" style="border-color:#e91e63;">
-                <h6 class="fw-bold mb-3 border-bottom pb-2" style="color:#e91e63;"><i class="fas fa-envelope-open-text"></i> প্রাপ্ত মেসেজ সমূহ</h6>
-                <div id="inbox_list_container"><p class="text-center text-muted">লোড হচ্ছে...</p></div>
-            </div>
-        </div>
-    </div>
 
-    <!-- ================= 3. STUDENT PROFILE (Dynamic Back Button) ================= -->
-    <div id="studentProfileDetails" class="page-view">
+    <!-- ================= 3. STUDENT PROFILE & DIRECTORY ================= -->
+    <div id="studentProfileDetailsTeacher" class="page-view">
         <div class="app-header-green"><h2>শিক্ষার্থীর প্রোফাইল</h2></div>
         <div class="container px-3 mt-3">
             <button onclick="goBackFromStudentProfile()" class="btn btn-sm btn-outline-secondary mb-3"><i class="fas fa-arrow-left"></i> পেছনে যান</button>
@@ -241,31 +244,69 @@
         </div>
     </div>
 
-    <!-- ================= 4. NEW ADMISSION & ADD OLD STUDENT ================= -->
+    <!-- Teacher Directory -->
+    <div id="teacherDirectory" class="page-view">
+        <div class="app-header-green"><h2>শিক্ষক ও কর্মচারী পরিচিতি</h2></div>
+        <div class="container px-3 mt-3">
+            <button onclick="goBackToDashboard()" class="btn btn-sm btn-outline-secondary mb-3"><i class="fas fa-arrow-left"></i> ড্যাশবোর্ডে যান</button>
+            <div id="public_teacher_list_container"></div>
+        </div>
+    </div>
+    
+    <div id="teacherMyProfile" class="page-view">
+        <div class="app-header-blue"><h2>শিক্ষক প্রোফাইল</h2></div>
+        <div class="container px-3 mt-3">
+            <button onclick="goBackFromTeacherProfile()" class="btn btn-sm btn-outline-secondary mb-3"><i class="fas fa-arrow-left"></i> পেছনে যান</button>
+            <div class="card custom-card border-left-blue text-center p-4 shadow-sm">
+                <img src="" class="profile-img-lg mx-auto d-block mb-3" id="view_tp_img">
+                <h4 class="fw-bold mb-2 text-primary" id="view_tp_name">নাম</h4>
+                <div class="bg-primary text-white py-2 px-3 rounded mb-4 d-inline-block shadow-sm"><h6 class="mb-0 fw-bold" id="view_tp_desig" style="font-size: 15px;">পদবি</h6></div>
+                <div class="text-start border-top pt-3">
+                    <ul class="list-group list-group-flush profile-list">
+                        <li class="list-group-item"><strong><i class="fas fa-id-badge text-muted me-1"></i> আইডি:</strong> <span id="view_tp_id"></span></li>
+                        <li class="list-group-item"><strong><i class="fas fa-user text-muted me-1"></i> পিতার নাম:</strong> <span id="view_tp_father"></span></li>
+                        <li class="list-group-item"><strong><i class="fas fa-calendar-day text-muted me-1"></i> জন্ম তারিখ:</strong> <span id="view_tp_dob"></span></li>
+                        <li class="list-group-item"><strong><i class="fas fa-venus-mars text-muted me-1"></i> লিঙ্গ:</strong> <span id="view_tp_gender"></span></li>
+                        <li class="list-group-item"><strong><i class="fas fa-tint text-danger me-1"></i> রক্তের গ্রুপ:</strong> <span id="view_tp_blood" class="fw-bold text-danger"></span></li>
+                        <li class="list-group-item"><strong><i class="fas fa-id-card text-muted me-1"></i> এনআইডি (NID):</strong> <span id="view_tp_nid"></span></li>
+                        <li class="list-group-item"><strong><i class="fas fa-graduation-cap text-muted me-1"></i> শিক্ষাগত যোগ্যতা:</strong> <span id="view_tp_edu"></span></li>
+                        <li class="list-group-item"><strong><i class="fas fa-map-marker-alt text-muted me-1"></i> ঠিকানা:</strong> <span id="view_tp_address"></span></li>
+                        <li class="list-group-item"><strong><i class="fas fa-phone-alt text-muted me-1"></i> মোবাইল:</strong> <span id="view_tp_phone"></span></li>
+                        <li class="list-group-item"><strong><i class="fas fa-calendar-check text-muted me-1"></i> যোগদানের তারিখ:</strong> <span id="view_tp_join_date"></span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ================= 4. ADMISSION & STUDENT MANAGE FORMS ================= -->
     <div id="teacherAddStudent" class="page-view">
         <div class="app-header-red"><h2>নতুন শিক্ষার্থী ভর্তি ফরম</h2></div>
         <div class="container px-3 mt-4">
             <button onclick="goBackToDashboard()" class="btn btn-sm btn-outline-secondary mb-3"><i class="fas fa-arrow-left"></i> ড্যাশবোর্ডে যান</button>
             <div class="card custom-card border-left-warning p-4 shadow-sm">
-                <label class="form-label text-muted mb-1 fw-bold">শ্রেণী নির্বাচন *:</label>
                 <select id="add_s_class" class="form-select mb-3 border-warning text-start" onchange="generateStudentId()"><option value="">ক্লাস সিলেক্ট করুন</option><option value="ফুলের মেলা">ফুলের মেলা</option><option value="প্লে">প্লে</option><option value="নার্সারি">নার্সারি</option><option>১ম শ্রেণি</option><option>২য় শ্রেণি</option><option>৩য় শ্রেণি</option><option>৪র্থ শ্রেণি</option><option>৫ম শ্রেণি</option></select>
                 
                 <input type="hidden" id="add_s_roll_hidden">
-                <label class="form-label text-success mb-1 fw-bold">অটোমেটেড রোল:</label>
                 <input type="text" id="add_s_id_field" class="form-control mb-3 fw-bold text-center fs-5" readonly style="background: #e8f5e9; color:#2e7d32;">
                 
-                <label class="form-label text-muted mb-1 fw-bold">ভর্তির তারিখ:</label><input type="date" id="add_s_admit_date" class="form-control mb-3">
+                <label class="form-label text-muted mb-1 fw-bold">ভর্তির তারিখ:</label>
+                <input type="date" id="add_s_admit_date" class="form-control mb-3">
                 <div class="text-center mb-3 border-bottom pb-3"><label class="form-label text-muted mb-1 fw-bold d-block">শিক্ষার্থীর ছবি আপলোড করুন:</label><input type="file" id="add_s_photo_input" class="form-control form-control-sm mx-auto" style="max-width: 250px;" accept="image/*" onchange="previewImage(this, 's_add_preview')"><img id="s_add_preview" src="" class="profile-img-lg mt-2 mx-auto d-none" style="width:80px;height:80px;"></div>
-                <label class="form-label text-muted mb-1 fw-bold">শিক্ষার্থীর নাম (বাংলায়) *:</label><input type="text" id="add_s_name" class="form-control mb-3 text-start" placeholder="পূর্ণ নাম বাধ্যতামূলক">
-                <label class="form-label text-muted mb-1 fw-bold">পিতার নাম *:</label><input type="text" id="add_s_father" class="form-control mb-3 text-start" placeholder="পিতার নাম বাধ্যতামূলক">
-                <label class="form-label text-muted mb-1 fw-bold">পিতার পেশা:</label><input type="text" id="add_s_father_prof" class="form-control mb-3 text-start" placeholder="পিতার পেশা লিখুন">
-                <label class="form-label text-muted mb-1 fw-bold">মাতার নাম *:</label><input type="text" id="add_s_mother" class="form-control mb-3 text-start" placeholder="মাতার নাম বাধ্যতামূলক">
-                <div class="row g-2 mb-3"><div class="col-6"><label class="form-label text-muted mb-1 fw-bold">জন্ম তারিখ:</label><input type="date" id="add_s_dob" class="form-control"></div><div class="col-6"><label class="form-label text-muted mb-1 fw-bold">লিঙ্গ:</label><select id="add_s_gender" class="form-select text-start"><option>ছাত্র (Male)</option><option>ছাত্রী (Female)</option></select></div></div>
-                <div class="row g-2 mb-3"><div class="col-6"><label class="form-label text-muted mb-1 fw-bold">ধর্ম:</label><select id="add_s_religion" class="form-select text-start"><option>ইসলাম</option><option>হিন্দুধর্ম</option><option>বৌদ্ধধর্ম</option><option>খ্রিস্টধর্ম</option></select></div><div class="col-6"><label class="form-label text-muted mb-1 fw-bold">রক্তের গ্রুপ:</label><select id="add_s_blood" class="form-select text-start"><option value="">নির্বাচন করুন</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>O+</option><option>O-</option><option>AB+</option><option>AB-</option></select></div></div>
-                <label class="form-label text-muted mb-1 fw-bold">জন্ম নিবন্ধন নং:</label><input type="text" id="add_s_birth_cert" class="form-control mb-3 text-start" placeholder="১৭ ডিজিটের জন্ম নিবন্ধন নম্বর">
-                <label class="form-label text-muted mb-1 fw-bold">বর্তমান ঠিকানা (বাড়ির নাম, গ্রাম, ওয়ার্ড নং):</label><input type="text" id="add_s_address_local" class="form-control mb-2 text-start" placeholder="বাড়ির নাম, গ্রাম, ওয়ার্ড নং">
-                <div class="row g-2 mb-3"><div class="col-6"><label class="form-label text-muted mb-1 fw-bold">থানা:</label><input type="text" class="form-control fw-bold text-center" value="রায়পুর" readonly style="background: #f4f5f7;"></div><div class="col-6"><label class="form-label text-muted mb-1 fw-bold">জেলা:</label><input type="text" class="form-control fw-bold text-center" value="লক্ষ্মীপুর" readonly style="background: #f4f5f7;"></div></div>
-                <label class="form-label text-muted mb-1 fw-bold">স্থায়ী ঠিকানা:</label><input type="text" id="add_s_per_address" class="form-control mb-3 text-start" placeholder="স্থায়ী ঠিকানা">
+                
+                <input type="text" id="add_s_name" class="form-control mb-3 text-start" placeholder="শিক্ষার্থীর নাম *">
+                <input type="text" id="add_s_father" class="form-control mb-3 text-start" placeholder="পিতার নাম *">
+                <input type="text" id="add_s_father_prof" class="form-control mb-3 text-start" placeholder="পিতার পেশা">
+                <input type="text" id="add_s_mother" class="form-control mb-3 text-start" placeholder="মাতার নাম *">
+                
+                <div class="row g-2 mb-3"><div class="col-6"><input type="date" id="add_s_dob" class="form-control"></div><div class="col-6"><select id="add_s_gender" class="form-select text-start"><option>ছাত্র</option><option>ছাত্রী</option></select></div></div>
+                <div class="row g-2 mb-3"><div class="col-6"><select id="add_s_religion" class="form-select text-start"><option>ইসলাম</option><option>হিন্দুধর্ম</option><option>বৌদ্ধধর্ম</option><option>খ্রিস্টধর্ম</option></select></div><div class="col-6"><select id="add_s_blood" class="form-select text-start"><option value="">রক্তের গ্রুপ</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>O+</option><option>O-</option><option>AB+</option><option>AB-</option></select></div></div>
+                
+                <input type="text" id="add_s_birth_cert" class="form-control mb-3 text-start" placeholder="জন্ম নিবন্ধন নম্বর">
+                <input type="text" id="add_s_address_local" class="form-control mb-2 text-start" placeholder="বর্তমান ঠিকানা (বাড়ির নাম, গ্রাম, ওয়ার্ড)">
+                <div class="row g-2 mb-3"><div class="col-6"><input type="text" class="form-control fw-bold text-center" value="রায়পুর" readonly style="background: #f4f5f7;"></div><div class="col-6"><input type="text" class="form-control fw-bold text-center" value="লক্ষ্মীপুর" readonly style="background: #f4f5f7;"></div></div>
+                <input type="text" id="add_s_per_address" class="form-control mb-3 text-start" placeholder="স্থায়ী ঠিকানা">
                 
                 <label class="form-label text-muted mb-1 fw-bold">পরিবহন (Transport):</label>
                 <div class="mb-2 text-start">
@@ -273,39 +314,41 @@
                     <input type="radio" name="add_s_transport" value="No" onchange="toggleTransport('add')" checked class="ms-3"> না
                 </div>
                 <div id="add_transport_loc_div" style="display:none;" class="mb-3">
-                    <label class="form-label text-muted mb-1 fw-bold">উঠার স্থান:</label>
                     <input type="text" id="add_s_transport_loc" class="form-control text-start" placeholder="যেখান থেকে বাসে উঠবে">
                 </div>
-                
-                <label class="form-label text-muted mb-1 fw-bold">মোবাইল নম্বর:</label><input type="text" id="add_s_phone" class="form-control mb-4 text-start" placeholder="সচল মোবাইল নাম্বার দিন">
+
+                <input type="text" id="add_s_phone" class="form-control mb-4 text-start" placeholder="মোবাইল নম্বর">
                 <button onclick="submitStudentData('new')" class="btn btn-warning w-100 py-2 fw-bold text-dark fs-5">ভর্তি নিশ্চিত করুন</button>
             </div>
         </div>
     </div>
-
+    
     <div id="teacherOldAddStudent" class="page-view">
         <div class="app-header-red"><h2>শিক্ষার্থী যুক্ত করুন</h2></div>
         <div class="container px-3 mt-4">
             <button onclick="goBackToDashboard()" class="btn btn-sm btn-outline-secondary mb-3"><i class="fas fa-arrow-left"></i> ড্যাশবোর্ডে যান</button>
             <div class="card custom-card border-left-teal p-4 shadow-sm">
-                <label class="form-label text-muted mb-1 fw-bold">শ্রেণী নির্বাচন *:</label>
                 <select id="old_add_s_class" class="form-select mb-3 border-teal text-start" onchange="generateOldStudentId()"><option value="">ক্লাস সিলেক্ট করুন</option><option value="ফুলের মেলা">ফুলের মেলা</option><option value="প্লে">প্লে</option><option value="নার্সারি">নার্সারি</option><option>১ম শ্রেণি</option><option>২য় শ্রেণি</option><option>৩য় শ্রেণি</option><option>৪র্থ শ্রেণি</option><option>৫ম শ্রেণি</option></select>
                 
                 <input type="hidden" id="old_add_s_roll_hidden">
-                <label class="form-label text-success mb-1 fw-bold">অটোমেটেড রোল:</label>
                 <input type="text" id="old_add_s_id_field" class="form-control mb-3 fw-bold text-center fs-5" readonly style="background: #e8f5e9; color:#2e7d32;">
                 
-                <label class="form-label text-muted mb-1 fw-bold">ভর্তির তারিখ:</label><input type="date" id="old_add_s_admit_date" class="form-control mb-3">
+                <label class="form-label text-muted mb-1 fw-bold">ভর্তির তারিখ:</label>
+                <input type="date" id="old_add_s_admit_date" class="form-control mb-3">
                 <div class="text-center mb-3 border-bottom pb-3"><label class="form-label text-muted mb-1 fw-bold d-block">ছবি আপলোড (ঐচ্ছিক):</label><input type="file" id="old_s_photo_input" class="form-control form-control-sm mx-auto" style="max-width: 250px;" accept="image/*" onchange="previewImage(this, 'old_s_add_preview')"><img id="old_s_add_preview" src="" class="profile-img-lg mt-2 mx-auto d-none" style="width:80px;height:80px;"></div>
-                <label class="form-label text-muted mb-1 fw-bold">নাম *:</label><input type="text" id="old_add_s_name" class="form-control mb-3 text-start" placeholder="নাম বাধ্যতামূলক">
-                <label class="form-label text-muted mb-1 fw-bold">পিতার নাম *:</label><input type="text" id="old_add_s_father" class="form-control mb-3 text-start" placeholder="পিতার নাম বাধ্যতামূলক">
-                <label class="form-label text-muted mb-1 fw-bold">পিতার পেশা:</label><input type="text" id="old_add_s_father_prof" class="form-control mb-3 text-start" placeholder="পিতার পেশা লিখুন">
-                <label class="form-label text-muted mb-1 fw-bold">মাতার নাম *:</label><input type="text" id="old_add_s_mother" class="form-control mb-3 text-start" placeholder="মাতার নাম বাধ্যতামূলক">
-                <div class="row g-2 mb-3"><div class="col-6"><label class="form-label text-muted mb-1 fw-bold">জন্ম তারিখ:</label><input type="date" id="old_add_s_dob" class="form-control"></div><div class="col-6"><label class="form-label text-muted mb-1 fw-bold">লিঙ্গ:</label><select id="old_add_s_gender" class="form-select text-start"><option>ছাত্র</option><option>ছাত্রী</option></select></div></div>
-                <div class="row g-2 mb-3"><div class="col-6"><label class="form-label text-muted mb-1 fw-bold">ধর্ম:</label><select id="old_add_s_religion" class="form-select text-start"><option>ইসলাম</option><option>হিন্দুধর্ম</option><option>বৌদ্ধধর্ম</option><option>খ্রিস্টধর্ম</option></select></div><div class="col-6"><label class="form-label text-muted mb-1 fw-bold">রক্তের গ্রুপ:</label><select id="old_add_s_blood" class="form-select text-start"><option value="">নির্বাচন করুন</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>O+</option><option>O-</option><option>AB+</option><option>AB-</option></select></div></div>
-                <label class="form-label text-muted mb-1 fw-bold">বর্তমান ঠিকানা (বাড়ির নাম, গ্রাম, ওয়ার্ড নং):</label><input type="text" id="old_add_s_address_local" class="form-control mb-2 text-start" placeholder="বাড়ির নাম, গ্রাম, ওয়ার্ড নং">
-                <div class="row g-2 mb-3"><div class="col-6"><label class="form-label text-muted mb-1 fw-bold">থানা:</label><input type="text" class="form-control fw-bold text-center" value="রায়পুর" readonly style="background: #f4f5f7;"></div><div class="col-6"><label class="form-label text-muted mb-1 fw-bold">জেলা:</label><input type="text" class="form-control fw-bold text-center" value="লক্ষ্মীপুর" readonly style="background: #f4f5f7;"></div></div>
-                <label class="form-label text-muted mb-1 fw-bold">স্থায়ী ঠিকানা:</label><input type="text" id="old_add_s_per_address" class="form-control mb-3 text-start" placeholder="স্থায়ী ঠিকানা">
+                
+                <input type="text" id="old_add_s_name" class="form-control mb-3 text-start" placeholder="শিক্ষার্থীর নাম *">
+                <input type="text" id="old_add_s_father" class="form-control mb-3 text-start" placeholder="পিতার নাম *">
+                <input type="text" id="old_add_s_father_prof" class="form-control mb-3 text-start" placeholder="পিতার পেশা">
+                <input type="text" id="old_add_s_mother" class="form-control mb-3 text-start" placeholder="মাতার নাম *">
+                
+                <div class="row g-2 mb-3"><div class="col-6"><input type="date" id="old_add_s_dob" class="form-control"></div><div class="col-6"><select id="old_add_s_gender" class="form-select text-start"><option>ছাত্র</option><option>ছাত্রী</option></select></div></div>
+                <div class="row g-2 mb-3"><div class="col-6"><select id="old_add_s_religion" class="form-select text-start"><option>ইসলাম</option><option>হিন্দুধর্ম</option><option>বৌদ্ধধর্ম</option><option>খ্রিস্টধর্ম</option></select></div><div class="col-6"><select id="old_add_s_blood" class="form-select text-start"><option value="">রক্তের গ্রুপ</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>O+</option><option>O-</option><option>AB+</option><option>AB-</option></select></div></div>
+                
+                <input type="text" id="old_add_s_birth_cert" class="form-control mb-3 text-start" placeholder="জন্ম নিবন্ধন নম্বর">
+                <input type="text" id="old_add_s_address_local" class="form-control mb-2 text-start" placeholder="বর্তমান ঠিকানা (গ্রাম, ওয়ার্ড)">
+                <div class="row g-2 mb-3"><div class="col-6"><input type="text" class="form-control fw-bold text-center" value="রায়পুর" readonly style="background: #f4f5f7;"></div><div class="col-6"><input type="text" class="form-control fw-bold text-center" value="লক্ষ্মীপুর" readonly style="background: #f4f5f7;"></div></div>
+                <input type="text" id="old_add_s_per_address" class="form-control mb-3 text-start" placeholder="স্থায়ী ঠিকানা">
                 
                 <label class="form-label text-muted mb-1 fw-bold">পরিবহন (Transport):</label>
                 <div class="mb-2 text-start">
@@ -313,12 +356,58 @@
                     <input type="radio" name="old_add_s_transport" value="No" onchange="toggleTransport('old_add')" checked class="ms-3"> না
                 </div>
                 <div id="old_add_transport_loc_div" style="display:none;" class="mb-3">
-                    <label class="form-label text-muted mb-1 fw-bold">উঠার স্থান:</label>
                     <input type="text" id="old_add_s_transport_loc" class="form-control text-start" placeholder="যেখান থেকে বাসে উঠবে">
                 </div>
-                
-                <label class="form-label text-muted mb-1 fw-bold">মোবাইল:</label><input type="text" id="old_add_s_phone" class="form-control mb-4 text-start" placeholder="সচল মোবাইল নাম্বার দিন">
+
+                <input type="text" id="old_add_s_phone" class="form-control mb-4 text-start" placeholder="মোবাইল নম্বর">
                 <button onclick="submitStudentData('old')" class="btn btn-success w-100 py-2 fw-bold fs-5">যুক্ত করুন</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Student with ALL Form Fields -->
+    <div id="teacherManageStudents" class="page-view">
+        <div class="app-header-red"><h2>শিক্ষার্থী ম্যানেজ করুন</h2></div>
+        <div class="container px-3 mt-4">
+            <button onclick="goBackToDashboard()" class="btn btn-sm btn-outline-secondary mb-3"><i class="fas fa-arrow-left"></i> ড্যাশবোর্ডে যান</button>
+            <select id="manage_s_class_filter" class="form-select mb-3 border-danger" onchange="renderTeacherManageStudentList()"><option value="All">সকল ক্লাস</option><option value="ফুলের মেলা">ফুলের মেলা</option><option value="প্লে">প্লে</option><option value="নার্সারি">নার্সারি</option><option>১ম শ্রেণি</option><option>২য় শ্রেণি</option><option>৩য় শ্রেণি</option><option>৪র্থ শ্রেণি</option><option>৫ম শ্রেণি</option></select>
+            <div id="teacher_student_list_container"></div>
+        </div>
+    </div>
+    
+    <div id="teacherEditStudent" class="page-view">
+        <div class="app-header-red"><h2>শিক্ষার্থী প্রোফাইল সংশোধন</h2></div>
+        <div class="container px-3 mt-4">
+            <button onclick="showPage('teacherManageStudents')" class="btn btn-sm btn-outline-secondary mb-3"><i class="fas fa-arrow-left"></i> পেছনে যান</button>
+            <div class="card custom-card border-left-warning p-4 shadow-sm">
+                <input type="hidden" id="edit_s_old_id_hidden"><input type="hidden" id="edit_s_class_hidden">
+                <input type="text" id="edit_s_id_input" class="form-control mb-2 fw-bold text-center fs-5" readonly style="background: #fff; border:2px solid #e67e22;">
+                
+                <input type="file" id="edit_s_photo_input" class="form-control form-control-sm mx-auto mb-3" accept="image/*" onchange="previewImage(this, 's_edit_preview')"><img id="s_edit_preview" src="" class="profile-img-lg mx-auto d-none mb-3">
+                
+                <input type="text" id="edit_s_name_teacher" class="form-control mb-3 text-start" placeholder="শিক্ষার্থীর নাম *">
+                <input type="text" id="edit_s_father_teacher" class="form-control mb-3 text-start" placeholder="পিতার নাম *">
+                <input type="text" id="edit_s_father_prof_teacher" class="form-control mb-3 text-start" placeholder="পিতার পেশা">
+                <input type="text" id="edit_s_mother_teacher" class="form-control mb-3 text-start" placeholder="মাতার নাম *">
+                
+                <div class="row g-2 mb-3"><div class="col-6"><input type="date" id="edit_s_dob_teacher" class="form-control"></div><div class="col-6"><select id="edit_s_gender_teacher" class="form-select text-start"><option>ছাত্র</option><option>ছাত্রী</option></select></div></div>
+                <div class="row g-2 mb-3"><div class="col-6"><select id="edit_s_religion_teacher" class="form-select text-start"><option>ইসলাম</option><option>হিন্দুধর্ম</option><option>বৌদ্ধধর্ম</option><option>খ্রিস্টধর্ম</option></select></div><div class="col-6"><select id="edit_s_blood_teacher" class="form-select text-start"><option value="">রক্তের গ্রুপ</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>O+</option><option>O-</option><option>AB+</option><option>AB-</option></select></div></div>
+                
+                <input type="text" id="edit_s_birth_cert_teacher" class="form-control mb-3 text-start" placeholder="জন্ম নিবন্ধন নং">
+                <input type="text" id="edit_s_address_teacher" class="form-control mb-3 text-start" placeholder="বর্তমান ঠিকানা">
+                <input type="text" id="edit_s_per_address_teacher" class="form-control mb-3 text-start" placeholder="স্থায়ী ঠিকানা">
+                
+                <label class="form-label text-muted mb-1 fw-bold">পরিবহন:</label>
+                <div class="mb-2 text-start">
+                    <input type="radio" name="edit_s_transport" value="Yes" onchange="toggleTransport('edit')"> হ্যাঁ 
+                    <input type="radio" name="edit_s_transport" value="No" onchange="toggleTransport('edit')" class="ms-3"> না
+                </div>
+                <div id="edit_transport_loc_div" style="display:none;" class="mb-3">
+                    <input type="text" id="edit_s_transport_loc_teacher" class="form-control text-start" placeholder="যেখান থেকে বাসে উঠবে">
+                </div>
+
+                <input type="text" id="edit_s_phone_teacher" class="form-control mb-4 text-start" placeholder="মোবাইল নম্বর">
+                <button onclick="saveEditedStudent()" class="btn btn-warning w-100 py-2 fw-bold text-dark fs-5">পরিবর্তন সেভ করুন</button>
             </div>
         </div>
     </div>
@@ -329,15 +418,9 @@
         <div class="app-header-blue"><h2 id="view_class_title">১ম শ্রেণি</h2><p>শিক্ষার্থী তালিকা ও হাজিরা</p></div>
         <div class="container px-3 mt-3">
             <button onclick="goBackToDashboard()" class="btn btn-sm btn-outline-secondary mb-3"><i class="fas fa-arrow-left"></i> ড্যাশবোর্ডে যান</button>
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <input type="date" id="teacher_att_date" class="form-control me-2 border-primary" style="max-width: 150px;" onchange="handleTeacherDateChange()">
-                <button class="btn btn-sm btn-success" id="btn_toggle_attendance" onclick="toggleAttendanceMode()"><i class="fas fa-clipboard-list"></i> হাজিরা নিন</button>
-            </div>
+            <div class="d-flex justify-content-between align-items-center mb-3"><input type="date" id="teacher_att_date" class="form-control me-2 border-primary" style="max-width: 150px;" onchange="handleTeacherDateChange()"><button class="btn btn-sm btn-success" id="btn_toggle_attendance" onclick="toggleAttendanceMode()"><i class="fas fa-clipboard-list"></i> হাজিরা নিন</button></div>
             <h6 class="fw-bold text-center text-primary mb-3" id="teacher_att_date_display"></h6>
-            <div class="input-group mb-4" id="search_box_att">
-                <span class="input-group-text bg-white border-primary"><i class="fas fa-search text-muted"></i></span>
-                <input type="text" class="form-control border-primary" placeholder="নাম বা পিন দিয়ে খুঁজুন..." onkeyup="searchAttList(this.value)">
-            </div>
+            <div class="input-group mb-4" id="search_box_att"><span class="input-group-text bg-white border-primary"><i class="fas fa-search text-muted"></i></span><input type="text" class="form-control border-primary" placeholder="নাম বা পিন..." onkeyup="searchAttList(this.value)"></div>
             <div id="student_list_container"></div>
         </div>
     </div>
@@ -352,34 +435,32 @@
             <div class="card custom-card border-left-purple p-3 mb-4 shadow-sm">
                 <h6 class="fw-bold text-purple mb-3"><i class="fas fa-edit"></i> নতুন পড়া যুক্ত করুন</h6>
                 <input type="date" id="lesson_add_date" class="form-control mb-3 border-purple">
-                <select id="lesson_class_select" class="form-select mb-3 border-purple">
-                    <option value="ফুলের মেলা">ফুলের মেলা</option><option value="প্লে">প্লে</option><option value="নার্সারি">নার্সারি</option><option>১ম শ্রেণি</option><option>২য় শ্রেণি</option><option>৩য় শ্রেণি</option><option>৪র্থ শ্রেণি</option><option>৫ম শ্রেণি</option>
-                </select>
+                <select id="lesson_class_select" class="form-select mb-3 border-purple"><option value="ফুলের মেলা">ফুলের মেলা</option><option value="প্লে">প্লে</option><option value="নার্সারি">নার্সারি</option><option>১ম শ্রেণি</option><option>২য় শ্রেণি</option><option>৩য় শ্রেণি</option><option>৪র্থ শ্রেণি</option><option>৫ম শ্রেণি</option></select>
                 <input type="text" id="lesson_subject" class="form-control mb-3 border-purple" placeholder="বিষয় (যেমন: বাংলা, গণিত)">
                 <textarea id="lesson_details" class="form-control mb-3 border-purple" rows="3" placeholder="পড়ার বিবরণ..."></textarea>
-                <input type="file" id="lesson_image_input" class="form-control mb-3" accept="image/*" onchange="previewImage(this, 'lesson_image_preview')">
-                <div class="text-center"><img id="lesson_image_preview" src="" class="lesson-img-preview mb-3"></div>
+                <input type="file" id="lesson_image_input" class="form-control mb-3" accept="image/*" onchange="previewImage(this, 'lesson_image_preview')"><div class="text-center"><img id="lesson_image_preview" src="" class="lesson-img-preview mb-3"></div>
                 <button class="btn text-white w-100 fw-bold py-2 fs-5" style="background-color: #9c27b0;" onclick="saveLesson()">সংরক্ষণ করুন</button>
             </div>
 
-            <!-- "পূর্বের পড়া খুঁজুন" ফিল্টার অপশন -->
+            <!-- Date Filter System for Lessons -->
             <div class="card custom-card border-left-blue p-3 shadow-sm">
                 <h6 class="fw-bold text-primary mb-3"><i class="fas fa-search"></i> পূর্বের পড়া খুঁজুন</h6>
                 <div class="row g-2 mb-3">
-                    <div class="col-6"><input type="date" id="lesson_search_date" class="form-control border-primary" onchange="renderLessons()"></div>
                     <div class="col-6">
-                        <select id="view_lesson_class_select" class="form-select border-primary" onchange="renderLessons()">
-                            <option value="All">সকল ক্লাস</option><option value="ফুলের মেলা">ফুলের মেলা</option><option value="প্লে">প্লে</option><option value="নার্সারি">নার্সারি</option>
-                            <option>১ম শ্রেণি</option><option>২য় শ্রেণি</option><option>৩য় শ্রেণি</option><option>৪র্থ শ্রেণি</option><option>৫ম শ্রেণি</option>
-                        </select>
+                        <label class="text-muted mb-1" style="font-size:12px;">তারিখ নির্বাচন করুন</label>
+                        <input type="date" id="lesson_search_date" class="form-control border-primary" onchange="renderLessons()">
+                    </div>
+                    <div class="col-6">
+                        <label class="text-muted mb-1" style="font-size:12px;">ক্লাস নির্বাচন করুন</label>
+                        <select id="view_lesson_class_select" class="form-select border-primary" onchange="renderLessons()"><option value="All">সকল ক্লাস</option><option value="ফুলের মেলা">ফুলের মেলা</option><option value="প্লে">প্লে</option><option value="নার্সারি">নার্সারি</option><option>১ম শ্রেণি</option><option>২য় শ্রেণি</option><option>৩য় শ্রেণি</option><option>৪র্থ শ্রেণি</option><option>৫ম শ্রেণি</option></select>
                     </div>
                 </div>
-                <h6 class="text-center text-muted fw-bold mb-3 border-bottom pb-2" id="lesson_display_date_title"></h6>
+                <h6 class="text-center text-muted fw-bold mb-3 border-bottom pb-2 mt-2" id="lesson_display_date_title">সকল পড়া</h6>
                 <div id="lesson_list_container"></div>
             </div>
         </div>
     </div>
-
+    
     <div id="teacherResultUpdate" class="page-view">
         <div class="app-header-blue"><h2>রেজাল্ট আপডেট</h2></div>
         <div class="container px-3 mt-4">
@@ -397,10 +478,7 @@
         <div class="container px-3 mt-4">
             <button onclick="showPage('teacherResultUpdate')" class="btn btn-sm btn-outline-secondary mb-3"><i class="fas fa-arrow-left"></i> পিছনে যান</button>
             <div class="card custom-card p-3 border-left-teal mb-4 shadow-sm">
-                <select id="exam_class_select" class="form-select mb-3 border-success" onchange="renderExamStudentList()">
-                    <option value="">ক্লাস সিলেক্ট করুন</option><option value="ফুলের মেলা">ফুলের মেলা</option><option value="প্লে">প্লে</option><option value="নার্সারি">নার্সারি</option>
-                    <option>১ম শ্রেণি</option><option>২য় শ্রেণি</option><option>৩য় শ্রেণি</option><option>৪র্থ শ্রেণি</option><option>৫ম শ্রেণি</option>
-                </select>
+                <select id="exam_class_select" class="form-select mb-3 border-success" onchange="renderExamStudentList()"><option value="">ক্লাস সিলেক্ট করুন</option><option value="ফুলের মেলা">ফুলের মেলা</option><option value="প্লে">প্লে</option><option value="নার্সারি">নার্সারি</option><option>১ম শ্রেণি</option><option>২য় শ্রেণি</option><option>৩য় শ্রেণি</option><option>৪র্থ শ্রেণি</option><option>৫ম শ্রেণি</option></select>
                 <input type="text" id="exam_subject" class="form-control mb-3 border-success" placeholder="বিষয়">
             </div>
             <div id="exam_students_container"></div>
@@ -434,6 +512,7 @@
         </div>
     </div>
 
+    <!-- Gallery Upload for Teachers (Sends to Pending) -->
     <div id="teacherGalleryUpload" class="page-view">
         <div class="app-header-blue"><h2>গ্যালারিতে ছবি পাঠান</h2></div>
         <div class="container px-3 mt-4">
@@ -445,45 +524,6 @@
             </div>
         </div>
     </div>
-
-
-    <!-- ================= 8. TEACHER & STAFF DIRECTORY ================= -->
-    <div id="teacherDirectory" class="page-view">
-        <div class="app-header-green"><h2>শিক্ষক ও কর্মচারী পরিচিতি</h2></div>
-        <div class="container px-3 mt-3">
-            <button onclick="goBackToDashboard()" class="btn btn-sm btn-outline-secondary mb-3"><i class="fas fa-arrow-left"></i> ড্যাশবোর্ডে যান</button>
-            <div id="public_teacher_list_container"></div>
-        </div>
-    </div>
-
-    <!-- Teacher Profile View -->
-    <div id="teacherMyProfile" class="page-view">
-        <div class="app-header-blue"><h2>শিক্ষক প্রোফাইল</h2></div>
-        <div class="container px-3 mt-3">
-            <button onclick="goBackFromTeacherProfile()" class="btn btn-sm btn-outline-secondary mb-3"><i class="fas fa-arrow-left"></i> পেছনে যান</button>
-            <div class="card custom-card border-left-blue text-center p-4 shadow-sm">
-                <img src="" class="profile-img-lg mx-auto d-block mb-3" id="view_tp_img">
-                <h4 class="fw-bold mb-2 text-primary" id="view_tp_name">নাম</h4>
-                <div class="bg-primary text-white py-2 px-3 rounded mb-4 d-inline-block shadow-sm"><h6 class="mb-0 fw-bold" id="view_tp_desig" style="font-size: 15px;">পদবি</h6></div>
-                
-                <div class="text-start border-top pt-3">
-                    <ul class="list-group list-group-flush profile-list">
-                        <li class="list-group-item"><strong><i class="fas fa-id-badge text-muted me-1"></i> আইডি:</strong> <span id="view_tp_id"></span></li>
-                        <li class="list-group-item"><strong><i class="fas fa-user text-muted me-1"></i> পিতার নাম:</strong> <span id="view_tp_father"></span></li>
-                        <li class="list-group-item"><strong><i class="fas fa-calendar-day text-muted me-1"></i> জন্ম তারিখ:</strong> <span id="view_tp_dob"></span></li>
-                        <li class="list-group-item"><strong><i class="fas fa-venus-mars text-muted me-1"></i> লিঙ্গ:</strong> <span id="view_tp_gender"></span></li>
-                        <li class="list-group-item"><strong><i class="fas fa-tint text-danger me-1"></i> রক্তের গ্রুপ:</strong> <span id="view_tp_blood" class="fw-bold text-danger"></span></li>
-                        <li class="list-group-item"><strong><i class="fas fa-id-card text-muted me-1"></i> এনআইডি (NID):</strong> <span id="view_tp_nid"></span></li>
-                        <li class="list-group-item"><strong><i class="fas fa-graduation-cap text-muted me-1"></i> শিক্ষাগত যোগ্যতা:</strong> <span id="view_tp_edu"></span></li>
-                        <li class="list-group-item"><strong><i class="fas fa-map-marker-alt text-muted me-1"></i> ঠিকানা:</strong> <span id="view_tp_address"></span></li>
-                        <li class="list-group-item"><strong><i class="fas fa-phone-alt text-muted me-1"></i> মোবাইল:</strong> <span id="view_tp_phone"></span></li>
-                        <li class="list-group-item"><strong><i class="fas fa-calendar-check text-muted me-1"></i> যোগদানের তারিখ:</strong> <span id="view_tp_join_date"></span></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
 
     <!-- ================= JAVASCRIPT ================= -->
     <script>
@@ -498,102 +538,157 @@
         const database = firebase.database();
 
         let headmasterData = { id: 'T-101', name: 'মোঃ রফিকুল ইসলাম', desig: 'প্রধান শিক্ষক', phone: '01700000001' };
-        let teachersData = [], staffData = [], studentsData = [], lessonsData = [], galleryImages = [], studentMessagesData = [];
-        let loggedInTeacher = null; let isAttendanceMode = false; let currentExamType = ''; 
+        let teachersData = [], staffData = [], studentsData = [], lessonsData = [], galleryImages = [];
+        let subscriptionData = { expiryDate: "2027-03-18", fee: "500", number: "01644234178", isLocked: false };
+        let userRole = 'teacher'; let loggedInTeacher = null; let isAttendanceMode = false; let currentExamType = ''; 
         let currentLessonImageBase64 = ""; let currentTeacherGalleryUploadBase64 = "";
         let currentSlide = 0; let slideInterval; let lastProfileViewSource = 'teacherDashboard'; 
         let uploadedImages = {};
 
         // Offline Caching & Auto Init
-        document.addEventListener("DOMContentLoaded", function() {
-            // Check Offline Status instantly
-            if(!navigator.onLine) { document.getElementById('offlineBanner').style.display = 'block'; }
-            window.addEventListener('offline', () => document.getElementById('offlineBanner').style.display = 'block');
-            window.addEventListener('online', () => document.getElementById('offlineBanner').style.display = 'none');
+        window.onload = function() {
+            if(!navigator.onLine) { let ob = document.getElementById('offlineBanner'); if(ob) ob.style.display = 'block'; }
+            window.addEventListener('offline', () => { let ob = document.getElementById('offlineBanner'); if(ob) ob.style.display = 'block'; });
+            window.addEventListener('online', () => { let ob = document.getElementById('offlineBanner'); if(ob) ob.style.display = 'none'; });
 
-            // Load from LocalStorage for Instant UI (Offline Support)
             try {
                 if(localStorage.getItem('mb_students')) studentsData = JSON.parse(localStorage.getItem('mb_students'));
                 if(localStorage.getItem('mb_teachers')) teachersData = JSON.parse(localStorage.getItem('mb_teachers'));
                 if(localStorage.getItem('mb_staff')) staffData = JSON.parse(localStorage.getItem('mb_staff'));
-                if(localStorage.getItem('mb_messages')) studentMessagesData = JSON.parse(localStorage.getItem('mb_messages'));
+                if(localStorage.getItem('mb_sub')) subscriptionData = JSON.parse(localStorage.getItem('mb_sub'));
             } catch(e) {}
 
-            setTimeout(() => { document.getElementById('loadingOverlay').style.opacity = '0'; setTimeout(()=> document.getElementById('loadingOverlay').style.display='none', 300); }, 800);
+            setTimeout(() => { let loader = document.getElementById('loadingOverlay'); if(loader) { loader.style.opacity = '0'; setTimeout(()=> loader.style.display='none', 300); } }, 800);
             
-            let today = getTodayISODate();
-            document.getElementById('teacher_att_date').value = today;
-            document.getElementById('lesson_add_date').value = today;
-            document.getElementById('lesson_search_date').value = today;
-            document.getElementById('add_s_admit_date').value = today; 
-            document.getElementById('old_add_s_admit_date').value = today;
+            try {
+                let today = getTodayISODate();
+                ['teacher_att_date', 'lesson_add_date', 'lesson_search_date', 'add_s_admit_date', 'old_add_s_admit_date'].forEach(id => {
+                    let el = document.getElementById(id);
+                    if(el) el.value = today;
+                });
+            } catch(e) {}
 
             startFirebaseSync();
-        });
+        };
 
+        // Firebase Sync without ReferenceErrors
         function startFirebaseSync() {
+            database.ref('subscription').on('value', snap => { 
+                if(snap.exists()) subscriptionData = { ...subscriptionData, ...snap.val() }; 
+                localStorage.setItem('mb_sub', JSON.stringify(subscriptionData));
+                checkSubscriptionStatus();
+            });
+            
+            // Notice Fetch safely
+            database.ref('notice').on('value', snap => { 
+                let noticeEl = document.getElementById('homeNoticeText');
+                if(noticeEl && snap.exists()) {
+                    let val = snap.val();
+                    noticeEl.innerText = (typeof val === 'string') ? val : (val.text || val.message || JSON.stringify(val));
+                } 
+            });
+
             database.ref('headmaster').on('value', snap => { if(snap.exists()) headmasterData = { ...headmasterData, ...snap.val() }; });
             
+            // Fixed "teachers" folder load
             database.ref('teachers').on('value', snap => { 
-                teachersData = []; snap.forEach(child => teachersData.push(child.val())); 
-                localStorage.setItem('mb_teachers', JSON.stringify(teachersData)); renderTeacherDirectory(); 
+                teachersData = []; if(snap.exists()) snap.forEach(child => teachersData.push(child.val())); 
+                localStorage.setItem('mb_teachers', JSON.stringify(teachersData)); 
+                if(typeof renderTeacherDirectory === 'function') renderTeacherDirectory(); 
             });
             
             database.ref('staff').on('value', snap => { 
-                staffData = []; snap.forEach(child => staffData.push(child.val())); 
-                localStorage.setItem('mb_staff', JSON.stringify(staffData)); renderTeacherDirectory(); 
+                staffData = []; if(snap.exists()) snap.forEach(child => staffData.push(child.val())); 
+                localStorage.setItem('mb_staff', JSON.stringify(staffData)); 
+                if(typeof renderTeacherDirectory === 'function') renderTeacherDirectory(); 
             });
             
             database.ref('students').on('value', snap => { 
-                studentsData = []; snap.forEach(child => { let d = child.val(); d.fbKey = child.key; studentsData.push(d); }); 
+                studentsData = []; 
+                if(snap.exists()) { snap.forEach(child => { let d = child.val(); d.fbKey = child.key; studentsData.push(d); }); }
                 localStorage.setItem('mb_students', JSON.stringify(studentsData));
                 let activePage = document.querySelector('.page-view.active');
-                if(activePage && activePage.id === 'teacherStudentList') renderTeacherStudentList();
+                if(activePage && activePage.id === 'teacherStudentList' && typeof renderTeacherStudentList === 'function') renderTeacherStudentList();
+                if(activePage && activePage.id === 'teacherManageStudents' && typeof renderTeacherManageStudentList === 'function') renderTeacherManageStudentList();
             });
             
-            database.ref('lessons').on('value', snap => { lessonsData = []; snap.forEach(child => { let data = child.val(); data.key = child.key; lessonsData.push(data); }); renderLessons(); });
-            database.ref('gallery').on('value', snap => { galleryImages = []; snap.forEach(child => galleryImages.push({key: child.key, url: child.val()})); renderGallerySlider(); });
-            database.ref('notice').on('value', snap => { if(snap.exists()) document.getElementById('homeNoticeText').innerText = snap.val(); });
-            
-            // New Inbox Sync (With exact fallbacks for message and class)
-            database.ref('messages_to_teachers').on('value', snap => {
-                studentMessagesData = []; 
-                snap.forEach(child => { let d = child.val(); d.key = child.key; studentMessagesData.push(d); }); 
-                localStorage.setItem('mb_messages', JSON.stringify(studentMessagesData));
-                renderTeacherInbox();
+            database.ref('lessons').on('value', snap => { 
+                lessonsData = []; 
+                if(snap.exists()) { snap.forEach(child => { let data = child.val(); data.key = child.key; lessonsData.push(data); }); }
+                if(typeof renderLessons === 'function') renderLessons(); 
             });
+            
+            // Legacy Gallery Catcher 
+            database.ref('gallery').on('value', snap => { 
+                galleryImages = []; 
+                if(snap.exists()) {
+                    if (typeof snap.val() === 'string') {
+                        galleryImages.push({key: 'legacy', url: snap.val()});
+                    } else {
+                        snap.forEach(child => {
+                            let cVal = child.val();
+                            if(typeof cVal === 'string') galleryImages.push({key: child.key, url: cVal});
+                            else if(cVal && cVal.url) galleryImages.push({key: child.key, url: cVal.url});
+                            else if(cVal && cVal.image) galleryImages.push({key: child.key, url: cVal.image});
+                        });
+                    }
+                }
+                if(typeof renderGallerySlider === 'function') renderGallerySlider(); 
+            });
+        }
+
+        // Lock App System
+        function checkSubscriptionStatus() {
+            let today = new Date(getTodayISODate()); let exp = new Date(subscriptionData.expiryDate); let diffTime = exp - today; let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            let lockOverlay = document.getElementById('appLockOverlay'); 
+            if(diffDays < 0 || subscriptionData.isLocked === true || subscriptionData.status === 'locked') {
+                if(lockOverlay) lockOverlay.style.display = 'flex'; 
+                let numEl = document.getElementById('lock_number'); if(numEl) numEl.innerText = subscriptionData.number || "01644234178"; 
+                let feeEl = document.getElementById('lock_fee'); if(feeEl) feeEl.innerText = toBanglaNum(subscriptionData.fee || 500); 
+                let msgEl = document.getElementById('lock_msg_display'); if(msgEl && subscriptionData.lockMessage) msgEl.innerText = subscriptionData.lockMessage;
+            } else { if(lockOverlay) lockOverlay.style.display = 'none'; }
         }
 
         // Utilities
         function customAlert(msg) { document.getElementById('customAlertMessage').innerText = msg; document.getElementById('customAlertOverlay').style.display = 'flex'; }
         function closeAlert() { document.getElementById('customAlertOverlay').style.display = 'none'; }
+        let currentConfirmAction = null;
+        function customConfirm(msg, callback) { document.getElementById('customConfirmMessage').innerText = msg; currentConfirmAction = callback; document.getElementById('customConfirmOverlay').style.display = 'flex'; }
+        function closeCustomConfirm() { document.getElementById('customConfirmOverlay').style.display = 'none'; currentConfirmAction = null; }
+        document.getElementById('customConfirmBtn').addEventListener('click', function() { if(currentConfirmAction) currentConfirmAction(); closeCustomConfirm(); });
         function showPage(pageId) { document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active')); document.getElementById(pageId).classList.add('active'); window.scrollTo(0, 0); }
         function goBackToDashboard() { showPage('teacherDashboard'); }
+        function goBackFromProfile() { showPage(lastProfileViewSource); }
+        function goBackFromTeacherProfile() { showPage(lastProfileViewSource); }
+        function goBackFromStudentProfile() { showPage(lastProfileViewSource); }
         function toBanglaNum(num) { const bNums = {'0':'০','1':'১','2':'২','3':'৩','4':'৪','5':'৫','6':'৬','7':'৭','8':'৮','9':'৯'}; return String(num).replace(/[0-9]/g, x => bNums[x] || x); }
         function getTodayISODate() { const d = new Date(); let m = ''+(d.getMonth()+1), day = ''+d.getDate(); if(m.length<2) m='0'+m; if(day.length<2) day='0'+day; return [d.getFullYear(), m, day].join('-'); }
         function toBanglaDate(iso) { if(!iso) return ""; const m = ["জানুয়ারি", "ফেব্রুয়ারি", "মার্চ", "এপ্রিল", "মে", "জুন", "জুলাই", "আগস্ট", "সেপ্টেম্বর", "অক্টোবর", "নভেম্বর", "ডিসেম্বর"]; const p = iso.split('-'); return p.length===3 ? toBanglaNum(parseInt(p[2])) + " " + m[parseInt(p[1])-1] + " " + toBanglaNum(p[0]) : iso; }
         function generateSixDigitPin() { return Math.floor(100000 + Math.random() * 900000).toString(); }
         function safeSetText(id, text) { let el = document.getElementById(id); if(el) el.innerText = text; }
-
+        
+        // Transport Radio Box Toggle FIX 
         function toggleTransport(type) { 
-            let radioName = type === 'add' ? 'add_s_transport' : 'old_add_s_transport'; 
-            let divId = type === 'add' ? 'add_transport_loc_div' : 'old_add_transport_loc_div'; 
-            let inputId = type === 'add' ? 'add_s_transport_loc' : 'old_add_s_transport_loc'; 
+            let radioName = type === 'add' ? 'add_s_transport' : (type === 'old_add' ? 'old_add_s_transport' : 'edit_s_transport'); 
+            let divId = type === 'add' ? 'add_transport_loc_div' : (type === 'old_add' ? 'old_add_transport_loc_div' : 'edit_transport_loc_div');
+            let inputId = type === 'add' ? 'add_s_transport_loc' : (type === 'old_add' ? 'old_add_s_transport_loc' : 'edit_s_transport_loc_teacher');
+            
             let checkedRadio = document.querySelector(`input[name="${radioName}"]:checked`); 
-            if(!checkedRadio) return; 
-            if(checkedRadio.value === 'Yes') { document.getElementById(divId).style.display = 'block'; } 
-            else { document.getElementById(divId).style.display = 'none'; document.getElementById(inputId).value = ''; } 
+            let divEl = document.getElementById(divId);
+            let inputEl = document.getElementById(inputId);
+            
+            if(!checkedRadio || !divEl || !inputEl) return;
+            if(checkedRadio.value === 'Yes') { divEl.style.display = 'block'; } 
+            else { divEl.style.display = 'none'; inputEl.value = ''; } 
         }
         
-        // Image Compression
         function previewImage(input, previewId) {
             if (input.files && input.files[0]) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     const img = new Image();
                     img.onload = function() {
-                        const canvas = document.createElement('canvas');
-                        let w = img.width, h = img.height;
+                        const canvas = document.createElement('canvas'); let w = img.width, h = img.height;
                         if(w>h) { if(w>600) { h*=600/w; w=600; } } else { if(h>600) { w*=600/h; h=600; } }
                         canvas.width = w; canvas.height = h;
                         const ctx = canvas.getContext('2d'); ctx.drawImage(img, 0, 0, w, h);
@@ -601,56 +696,43 @@
                         uploadedImages[previewId] = dataUrl;
                         if(previewId === 'lesson_image_preview') currentLessonImageBase64 = dataUrl;
                         if(previewId === 'teacher_gallery_preview') currentTeacherGalleryUploadBase64 = dataUrl;
-                        let prev = document.getElementById(previewId); if(prev) { prev.src = dataUrl; prev.style.display = 'block'; }
+                        let prev = document.getElementById(previewId); if(prev) { prev.src = dataUrl; prev.style.display = 'block'; prev.classList.remove('d-none'); }
                     }; img.src = e.target.result;
                 }; reader.readAsDataURL(input.files[0]);
             }
         }
 
-        // Auto Slider for Gallery
+        // Gallery Slider
         function renderGallerySlider() { 
-            let tracks = document.querySelectorAll('.gallery-slider-track'); 
-            let dotsContainers = document.querySelectorAll('.slider-dots'); 
-            if(tracks.length === 0) return; 
-            
+            let tracks = document.querySelectorAll('.gallery-slider-track'); let dotsContainers = document.querySelectorAll('.slider-dots'); if(tracks.length === 0) return; 
             let trackHtml = ''; let dotsHtml = ''; 
-            if(galleryImages.length === 0) { 
-                trackHtml = '<div class="gallery-slide d-flex align-items-center justify-content-center text-white w-100 bg-dark">গ্যালারিতে কোনো ছবি নেই</div>'; 
-            } else { 
-                galleryImages.forEach((imgObj, idx) => { 
-                    trackHtml += `<img src="${imgObj.url}" class="gallery-slide">`; 
-                    dotsHtml += `<span class="slider-dot ${idx === 0 ? 'active' : ''}" onclick="goToSlide(${idx})"></span>`; 
-                }); 
-            }
-            
-            tracks.forEach(t => t.innerHTML = trackHtml);
-            dotsContainers.forEach(d => d.innerHTML = dotsHtml);
-            
-            if(currentSlide >= galleryImages.length) currentSlide = 0; 
-            updateSliderPosition(); 
+            if(galleryImages.length === 0) { trackHtml = '<div class="gallery-slide d-flex align-items-center justify-content-center text-white w-100 bg-dark">গ্যালারিতে কোনো ছবি নেই</div>'; } else { galleryImages.forEach((imgObj, idx) => { trackHtml += `<img src="${imgObj.url}" class="gallery-slide">`; dotsHtml += `<span class="slider-dot ${idx === 0 ? 'active' : ''}" onclick="goToSlide(${idx})"></span>`; }); }
+            tracks.forEach(t => t.innerHTML = trackHtml); dotsContainers.forEach(d => d.innerHTML = dotsHtml);
+            if(currentSlide >= galleryImages.length) currentSlide = 0; updateSliderPosition(); 
         }
-        function moveGallery(dir) { 
-            if(galleryImages.length === 0) return; 
-            currentSlide += dir; 
-            if(currentSlide < 0) currentSlide = galleryImages.length - 1; 
-            if(currentSlide >= galleryImages.length) currentSlide = 0; 
-            updateSliderPosition(); 
-        }
+        function moveGallery(dir) { if(galleryImages.length === 0) return; currentSlide += dir; if(currentSlide < 0) currentSlide = galleryImages.length - 1; if(currentSlide >= galleryImages.length) currentSlide = 0; updateSliderPosition(); }
         function goToSlide(idx) { currentSlide = idx; updateSliderPosition(); stopAutoSlide(); startAutoSlide(); }
         function updateSliderPosition() { 
-            let tracks = document.querySelectorAll('.gallery-slider-track'); 
-            tracks.forEach(t => t.style.transform = `translateX(-${currentSlide * 100}%)`); 
-            
-            let dotsContainers = document.querySelectorAll('.slider-dots'); 
-            dotsContainers.forEach(dc => {
-                let dots = dc.querySelectorAll('.slider-dot');
-                dots.forEach((dot, idx) => { if(idx === currentSlide) dot.classList.add('active'); else dot.classList.remove('active'); });
-            });
+            document.querySelectorAll('.gallery-slider-track').forEach(t => t.style.transform = `translateX(-${currentSlide * 100}%)`); 
+            document.querySelectorAll('.slider-dots').forEach(dc => { let dots = dc.querySelectorAll('.slider-dot'); dots.forEach((dot, idx) => { if(idx === currentSlide) dot.classList.add('active'); else dot.classList.remove('active'); }); });
         }
         function startAutoSlide() { clearInterval(slideInterval); slideInterval = setInterval(() => { moveGallery(1); }, 3000); }
         function stopAutoSlide() { clearInterval(slideInterval); }
 
-        function submitGalleryForApproval() { let imgData = currentTeacherGalleryUploadBase64 || uploadedImages['teacher_gallery_preview']; if(!imgData) { customAlert("অনুগ্রহ করে একটি ছবি নির্বাচন করুন!"); return; } database.ref('pendingGallery').push(imgData).then(() => { customAlert("ছবিটি অ্যাপ্রুভালের জন্য পাঠানো হয়েছে।"); document.getElementById('teacher_gallery_img_input').value = ""; document.getElementById('teacher_gallery_preview').style.display = "none"; currentTeacherGalleryUploadBase64 = ""; uploadedImages['teacher_gallery_preview'] = null; showPage('teacherDashboard'); }); }
+        function submitGalleryForApproval() { 
+            let imgData = currentTeacherGalleryUploadBase64 || uploadedImages['teacher_gallery_preview']; 
+            if(!imgData) { customAlert("অনুগ্রহ করে একটি ছবি নির্বাচন করুন!"); return; } 
+            database.ref('pendingGallery').push(imgData).then(() => { 
+                customAlert("ছবিটি অ্যাপ্রুভালের জন্য পাঠানো হয়েছে।"); 
+                let inputEl = document.getElementById('teacher_gallery_img_input');
+                if(inputEl) inputEl.value = ""; 
+                let prevEl = document.getElementById('teacher_gallery_preview');
+                if(prevEl) prevEl.style.display = "none"; 
+                currentTeacherGalleryUploadBase64 = ""; 
+                uploadedImages['teacher_gallery_preview'] = null; 
+                showPage('teacherDashboard'); 
+            }); 
+        }
 
         // Login & Logout
         function teacherLogin() {
@@ -666,70 +748,44 @@
                 document.getElementById('teacher_login_id').value=''; document.getElementById('teacher_password').value=''; 
             } else { customAlert("ভুল আইডি বা পাসওয়ার্ড!"); }
         }
-        function logoutTeacher() { loggedInTeacher = null; showPage('teacherLoginPage'); }
+        function logoutTeacher() { loggedInTeacher = null; isAttendanceMode = false; showPage('teacherLoginPage'); }
 
-        // Teacher Directory & Profile
+        // Teacher Directory
         function renderTeacherDirectory() {
             let container = document.getElementById('public_teacher_list_container'); if(!container) return;
             container.innerHTML = `<h6 class="fw-bold text-danger mb-2">প্রধান শিক্ষক</h6><div class="card custom-card p-3 mb-4 border-left-red shadow-sm" style="cursor:pointer;" onclick="viewTeacherProfile('T-101', 'teacherDirectory')"><div class="d-flex align-items-center"><img src="${headmasterData.photo || `https://ui-avatars.com/api/?name=${encodeURIComponent(headmasterData.name)}&background=d32f2f&color=fff`}" class="teacher-img-sm"><div class="ms-3"><h6 class="mb-0 fw-bold">${headmasterData.name}</h6><small>${headmasterData.desig}</small></div></div></div><h6 class="fw-bold text-primary mb-2">সহকারী শিক্ষকবৃন্দ</h6>`;
-            teachersData.forEach(t => { container.innerHTML += `<div class="card custom-card p-3 mb-2 border-left-blue shadow-sm" style="cursor:pointer;" onclick="viewTeacherProfile('${t.id}', 'teacherDirectory')"><div class="d-flex align-items-center"><img src="${t.photo || `https://ui-avatars.com/api/?name=${encodeURIComponent(t.name)}&background=1976d2&color=fff`}" class="teacher-img-sm"><div class="ms-3"><h6 class="mb-0 fw-bold">${t.name}</h6><small>${t.desig}</small></div></div></div>`; });
+            if(teachersData.length === 0) { container.innerHTML += `<p class="text-muted text-center w-100">কোনো শিক্ষক নেই</p>`; }
+            teachersData.forEach(t => { container.innerHTML += `<div class="card custom-card p-3 mb-2 border-left-blue shadow-sm" style="cursor:pointer;" onclick="viewTeacherProfile('${t.id}', 'teacherDirectory')"><div class="d-flex align-items-center"><img src="${t.photo || `https://ui-avatars.com/api/?name=${encodeURIComponent(t.name||'')}&background=1976d2&color=fff`}" class="teacher-img-sm"><div class="ms-3"><h6 class="mb-0 fw-bold">${t.name||'নাম নেই'}</h6><small>${t.desig||'---'}</small></div></div></div>`; });
             container.innerHTML += `<h6 class="fw-bold text-warning mb-2 mt-4">কর্মচারী ও অন্যান্য</h6>`;
-            staffData.forEach(t => { container.innerHTML += `<div class="card custom-card p-3 mb-2 border-left-orange shadow-sm" style="cursor:pointer;" onclick="viewTeacherProfile('${t.id}', 'teacherDirectory')"><div class="d-flex align-items-center"><img src="${t.photo || `https://ui-avatars.com/api/?name=${encodeURIComponent(t.name)}&background=e67e22&color=fff`}" class="teacher-img-sm"><div class="ms-3"><h6 class="mb-0 fw-bold">${t.name}</h6><small>${t.desig}</small></div></div></div>`; });
+            if(staffData.length === 0) { container.innerHTML += `<p class="text-muted text-center w-100">কোনো কর্মচারী নেই</p>`; }
+            staffData.forEach(t => { container.innerHTML += `<div class="card custom-card p-3 mb-2 border-left-orange shadow-sm" style="cursor:pointer;" onclick="viewTeacherProfile('${t.id}', 'teacherDirectory')"><div class="d-flex align-items-center"><img src="${t.photo || `https://ui-avatars.com/api/?name=${encodeURIComponent(t.name||'')}&background=e67e22&color=fff`}" class="teacher-img-sm"><div class="ms-3"><h6 class="mb-0 fw-bold">${t.name||'নাম নেই'}</h6><small>${t.desig||'---'}</small></div></div></div>`; });
         }
         function viewTeacherProfile(id, source) {
             lastProfileViewSource = source; 
             let t = null;
             if (id === 'T-101') { t = headmasterData; } 
-            else { t = teachersData.find(x => x.id === id) || staffData.find(x => x.id === id); if (!t && loggedInTeacher && loggedInTeacher.id === id) t = loggedInTeacher; }
+            else { t = teachersData.find(x => x.id === id) || staffData.find(x => x.id === id); if (!t && loggedInTeacher && loggedInTeacher.id === id) { t = loggedInTeacher; lastProfileViewSource='teacherDashboard';} }
             
             if(t) {
-                safeSetText('view_tp_name', t.name); safeSetText('view_tp_desig', t.desig); 
-                safeSetText('view_tp_id', t.id); safeSetText('view_tp_father', t.father || '---'); 
+                safeSetText('view_tp_name', t.name || 'নাম নেই'); safeSetText('view_tp_desig', t.desig || '---'); 
+                safeSetText('view_tp_id', t.id || '---'); safeSetText('view_tp_father', t.father || '---'); 
                 safeSetText('view_tp_phone', t.phone || '---'); safeSetText('view_tp_address', t.address || '---');
                 safeSetText('view_tp_dob', (t.dob && t.dob !== '---') ? toBanglaDate(t.dob) : '---'); 
                 safeSetText('view_tp_gender', t.gender || '---'); safeSetText('view_tp_blood', t.bloodGroup || '---'); 
                 safeSetText('view_tp_nid', t.nid || '---'); safeSetText('view_tp_edu', t.edu || '---'); 
                 safeSetText('view_tp_join_date', (t.joinDate && t.joinDate !== '---') ? toBanglaDate(t.joinDate) : '---');
-                
-                document.getElementById('view_tp_img').src = t.photo || `https://ui-avatars.com/api/?name=${encodeURIComponent(t.name)}&background=1976d2&color=fff`; 
+                document.getElementById('view_tp_img').src = t.photo || `https://ui-avatars.com/api/?name=${encodeURIComponent(t.name||'')}&background=1976d2&color=fff`; 
                 showPage('teacherMyProfile');
             } else { customAlert("প্রোফাইল লোড করা সম্ভব হয়নি।"); }
         }
-        function goBackFromTeacherProfile() { showPage(lastProfileViewSource); }
 
-        // Dynamic Student Search
-        function teacherGlobalSearch() {
-            let cls = document.getElementById('global_search_class').value; 
-            let query = document.getElementById('global_search_input').value.toLowerCase().trim(); 
-            let resBox = document.getElementById('search_result_box');
-            if(!query) { customAlert("নাম বা পিন লিখুন!"); resBox.style.display = 'none'; return; }
-            
-            let found = studentsData.filter(s => {
-                let matchCls = (cls === 'All' || (s.class || "").replace(/\s/g,"") === cls.replace(/\s/g,""));
-                let safePin = String(s.loginPin || "").toLowerCase();
-                let safeName = String(s.name || "").toLowerCase();
-                let safeRoll = String(s.roll || "").toLowerCase();
-                let matchQ = safePin.includes(query) || safeName.includes(query) || safeRoll.includes(query);
-                return matchCls && matchQ;
-            });
-            resBox.innerHTML = '';
-            
-            if(found.length > 0) { 
-                found.forEach(f => { 
-                    resBox.innerHTML += `<div class="student-list-item mb-2 border-left-teal shadow-sm" style="cursor:pointer;" onclick="viewStudentProfile('${f.id}', 'teacherDashboard')"><div style="flex:1;"><h6 class="mb-0 fw-bold text-success">${f.name}</h6><small>রোল: ${toBanglaNum(f.roll)} | পিন: ${f.loginPin} | ক্লাস: ${f.class}</small></div></div>`; 
-                }); 
-                resBox.style.display = 'block'; 
-            } else { customAlert("শিক্ষার্থী পাওয়া যায়নি!"); resBox.style.display = 'none'; }
-        }
-
-        // Student Profile Navigation
+        // Student Profile & Zero Fallbacks
         function viewStudentProfile(id, source) {
-            lastProfileViewSource = source; 
-            let std = studentsData.find(s => s.id === id);
+            lastProfileViewSource = source; let std = studentsData.find(s => s.id === id);
             if(std) {
                 let prefix = 'view_sp_'; 
-                safeSetText(prefix + 'name', std.name); safeSetText(prefix + 'class', std.class); 
-                safeSetText(prefix + 'id', `${toBanglaNum(std.roll)}`); safeSetText(prefix + 'pin', std.loginPin || '---'); 
+                safeSetText(prefix + 'name', std.name || 'নাম নেই'); safeSetText(prefix + 'class', std.class || '---'); 
+                safeSetText(prefix + 'id', std.roll ? `${toBanglaNum(std.roll)}` : '---'); safeSetText(prefix + 'pin', std.loginPin || '---'); 
                 safeSetText(prefix + 'father', std.father || '---'); safeSetText(prefix + 'mother', std.mother || '---'); 
                 safeSetText(prefix + 'father_prof', std.fatherProf || '---');
                 safeSetText(prefix + 'phone', std.phone || '---'); safeSetText(prefix + 'address', std.address || '---');
@@ -743,93 +799,81 @@
                 let locLi = document.getElementById('li_transport_loc');
                 if(std.transport === 'Yes') { locLi.style.display = 'block'; safeSetText(prefix + 'transport_loc', std.transportLoc || '---'); } else { locLi.style.display = 'none'; }
                 
-                document.getElementById('view_sp_img').src = std.photo || `https://ui-avatars.com/api/?name=${encodeURIComponent(std.name)}&background=1a7844&color=fff`;
-                showPage('studentProfileDetails');
+                document.getElementById('view_sp_img').src = std.photo || `https://ui-avatars.com/api/?name=${encodeURIComponent(std.name||'')}&background=1a7844&color=fff`;
+                showPage('studentProfileDetailsTeacher');
             }
         }
-        function goBackFromStudentProfile() { showPage(lastProfileViewSource); }
+
+        // Student Search 
+        function teacherGlobalSearch() {
+            let cls = document.getElementById('global_search_class').value; let query = document.getElementById('global_search_input').value.toLowerCase().trim(); let resBox = document.getElementById('search_result_box');
+            if(!query) { customAlert("নাম বা পিন লিখুন!"); resBox.style.display = 'none'; return; }
+            let found = studentsData.filter(s => { let matchCls = (cls === 'All' || (s.class||"").replace(/\s/g,"") === cls.replace(/\s/g,"")); let safePin = String(s.loginPin || "").toLowerCase(); let safeName = String(s.name || "").toLowerCase(); let safeRoll = String(s.roll || "").toLowerCase(); let matchQ = safePin.includes(query) || safeName.includes(query) || safeRoll.includes(query); return matchCls && matchQ; });
+            resBox.innerHTML = '';
+            if(found.length > 0) { found.forEach(f => { resBox.innerHTML += `<div class="student-list-item mb-2 border-left-teal shadow-sm" style="cursor:pointer;" onclick="viewStudentProfile('${f.id}', 'teacherDashboard')"><div style="flex:1;"><h6 class="mb-0 fw-bold text-success">${f.name || 'নাম নেই'}</h6><small>রোল: ${f.roll?toBanglaNum(f.roll):'---'} | পিন: ${f.loginPin||'---'} | ক্লাস: ${f.class||'---'}</small></div></div>`; }); resBox.style.display = 'block'; } else { customAlert("শিক্ষার্থী পাওয়া যায়নি!"); resBox.style.display = 'none'; }
+        }
 
         // Admission Logic
         function getNextStudentRoll(cls) { 
             let classStds = studentsData.filter(s => (s.class || "").replace(/\s/g, "") === cls.replace(/\s/g, ""));
-            let maxRoll = 0;
-            classStds.forEach(s => {
-                if(s.roll && s.roll.startsWith('MB-')) {
-                    let num = parseInt(s.roll.replace('MB-', ''));
-                    if(!isNaN(num) && num > maxRoll) maxRoll = num;
-                }
-            });
+            let maxRoll = 0; classStds.forEach(s => { if(s.roll && s.roll.startsWith('MB-')) { let num = parseInt(s.roll.replace('MB-', '')); if(!isNaN(num) && num > maxRoll) maxRoll = num; } });
             return 'MB-' + (maxRoll + 1); 
         }
-        
         function openAddStudent() { document.getElementById('add_s_class').value = ""; document.getElementById('add_s_id_field').value = ""; showPage('teacherAddStudent'); }
         function openOldAddStudent() { document.getElementById('old_add_s_class').value = ""; document.getElementById('old_add_s_id_field').value = ""; showPage('teacherOldAddStudent'); }
         
-        function generateStudentId() { 
-            let cls = document.getElementById('add_s_class').value; 
-            if(cls) { let roll = getNextStudentRoll(cls); document.getElementById('add_s_roll_hidden').value = roll; document.getElementById('add_s_id_field').value = `রোল: ${roll}`; } 
-            else { document.getElementById('add_s_id_field').value = ''; }
-        }
-        function generateOldStudentId() { 
-            let cls = document.getElementById('old_add_s_class').value; 
-            if(cls) { let roll = getNextStudentRoll(cls); document.getElementById('old_add_s_roll_hidden').value = roll; document.getElementById('old_add_s_id_field').value = `রোল: ${roll}`; } 
-            else { document.getElementById('old_add_s_id_field').value = ''; }
-        }
+        function generateStudentId() { let cls = document.getElementById('add_s_class').value; if(cls) { let roll = getNextStudentRoll(cls); document.getElementById('add_s_roll_hidden').value = roll; document.getElementById('add_s_id_field').value = `রোল: ${roll}`; } else { document.getElementById('add_s_id_field').value = ''; } }
+        function generateOldStudentId() { let cls = document.getElementById('old_add_s_class').value; if(cls) { let roll = getNextStudentRoll(cls); document.getElementById('old_add_s_roll_hidden').value = roll; document.getElementById('old_add_s_id_field').value = `রোল: ${roll}`; } else { document.getElementById('old_add_s_id_field').value = ''; } }
         
         function submitStudentData(type) {
             try {
                 let prefix = type === 'new' ? 'add_s_' : 'old_add_s_';
-                let cls = document.getElementById(prefix + 'class').value; 
-                let roll = document.getElementById(prefix + 'roll_hidden').value;
-                let name = document.getElementById(prefix + 'name').value.trim(); 
-                let father = document.getElementById(prefix + 'father').value.trim(); 
-                let mother = document.getElementById(prefix + 'mother').value.trim();
-                
+                let cls = document.getElementById(prefix + 'class').value; let roll = document.getElementById(prefix + 'roll_hidden').value; let name = document.getElementById(prefix + 'name').value.trim(); let father = document.getElementById(prefix + 'father').value.trim(); let mother = document.getElementById(prefix + 'mother').value.trim();
                 if(!cls || !name || !father || !mother) { customAlert("তারকা (*) চিহ্নিত ঘরগুলো পূরণ করুন!"); return; }
+                let localAdd = document.getElementById(prefix + 'address_local').value.trim(); let fullAddress = localAdd !== "" ? localAdd + ", রায়পুর, লক্ষ্মীপুর" : "রায়পুর, লক্ষ্মীপুর"; 
                 
-                let localAdd = document.getElementById(prefix + 'address_local').value.trim(); 
-                let fullAddress = localAdd !== "" ? localAdd + ", রায়পুর, লক্ষ্মীপুর" : "রায়পুর, লক্ষ্মীপুর"; 
-                
-                let transRadio = document.querySelector(`input[name="${prefix}transport"]:checked`);
+                let transRadio = document.querySelector(`input[name="${prefix}transport"]:checked`); 
                 let transportVal = transRadio ? transRadio.value : "No"; 
+                let transLocInput = document.getElementById(prefix + 'transport_loc'); 
+                let transportLoc = transLocInput ? transLocInput.value.trim() : '---'; 
+                if(transportVal === "No" || !transportLoc) transportLoc = "---";
                 
-                let transLocInput = document.getElementById(prefix + 'transport_loc');
-                let transportLoc = transLocInput ? transLocInput.value.trim() : '---';
-                if(transportVal === "No") transportLoc = "---";
-                
-                let studentPin = generateSixDigitPin(); 
-                let admitDate = document.getElementById(prefix + 'admit_date').value || getTodayISODate(); 
-                
-                let imgKey = type === 'new' ? 's_add_preview' : 'old_s_add_preview';
-                let photoData = uploadedImages[imgKey] || ""; 
-                
+                let studentPin = generateSixDigitPin(); let admitDate = document.getElementById(prefix + 'admit_date').value || getTodayISODate(); 
+                let imgKey = type === 'new' ? 's_add_preview' : 'old_s_add_preview'; let photoData = uploadedImages[imgKey] || ""; 
                 let id = database.ref('students').push().key; 
                 
-                let stdObj = { 
-                    id: id, loginPin: studentPin, class: cls, roll: roll, name: name, father: father, mother: mother, 
-                    fatherProf: document.getElementById(prefix + 'father_prof').value || '---', 
-                    dob: document.getElementById(prefix + 'dob').value || '---', 
-                    gender: document.getElementById(prefix + 'gender').value, religion: document.getElementById(prefix + 'religion').value, 
-                    bloodGroup: document.getElementById(prefix + 'blood').value || '---', birthCert: document.getElementById(prefix + 'birth_cert').value || '---', 
-                    address: fullAddress, perAddress: document.getElementById(prefix + 'per_address').value || '---', phone: document.getElementById(prefix + 'phone').value || '---', 
-                    transport: transportVal, transportLoc: transportLoc || '---', admitDate: admitDate, photo: photoData 
-                };
+                let stdObj = { id: id, loginPin: studentPin, class: cls, roll: roll, name: name, father: father, mother: mother, fatherProf: document.getElementById(prefix + 'father_prof').value || '---', dob: document.getElementById(prefix + 'dob').value || '---', gender: document.getElementById(prefix + 'gender').value, religion: document.getElementById(prefix + 'religion').value, bloodGroup: document.getElementById(prefix + 'blood').value || '---', birthCert: document.getElementById(prefix + 'birth_cert').value || '---', address: fullAddress, perAddress: document.getElementById(prefix + 'per_address').value || '---', phone: document.getElementById(prefix + 'phone').value || '---', transport: transportVal, transportLoc: transportLoc, admitDate: admitDate, photo: photoData };
                 
-                database.ref('students/' + id).set(stdObj).then(() => { 
-                    customAlert(`শিক্ষার্থী যুক্ত সফল হয়েছে!\nরোল: ${roll}\nলগিন পিন: ${studentPin}`); 
-                    document.getElementById(prefix + 'name').value = '';
-                    document.getElementById(prefix + 'father').value = '';
-                    document.getElementById(prefix + 'mother').value = '';
-                    document.getElementById(prefix + 'phone').value = '';
-                    document.getElementById(prefix + 'birth_cert').value = '';
-                    
-                    uploadedImages[imgKey] = null;
-                    let previewImg = document.getElementById(imgKey);
-                    if(previewImg) { previewImg.src = ""; previewImg.style.display = "none"; }
-                    
-                    goBackToDashboard(); 
-                }).catch(e => customAlert("ফায়ারবেস এরর: " + e.message));
+                database.ref('students/' + id).set(stdObj).then(() => { customAlert(`শিক্ষার্থী যুক্ত সফল হয়েছে!\nরোল: ${roll}\nলগিন পিন: ${studentPin}`); document.querySelectorAll(`input[type="text"]`).forEach(i => i.value = ''); uploadedImages[imgKey] = null; let previewImg = document.getElementById(imgKey); if(previewImg) { previewImg.src = ""; previewImg.style.display = "none"; } goBackToDashboard(); }).catch(e => customAlert("ফায়ারবেস এরর: " + e.message));
             } catch(error) { customAlert("সিস্টেম এরর: " + error.message); }
+        }
+
+        function renderTeacherManageStudentList() {
+            let filter = document.getElementById('manage_s_class_filter'); if(!filter) return; let clsFilter = filter.value; let container = document.getElementById('teacher_student_list_container'); container.innerHTML = '';
+            let list = (clsFilter === "All") ? studentsData : studentsData.filter(s => (s.class || "").replace(/\s/g, "") === clsFilter.replace(/\s/g, ""));
+            if(list.length === 0) { container.innerHTML = `<p class="text-center text-muted mt-3">শিক্ষার্থী নেই।</p>`; return; }
+            list.forEach(s => { 
+                container.innerHTML += `<div class="student-list-item border-left-teal shadow-sm"><div style="cursor:pointer; flex:1;" onclick="viewStudentProfile('${s.id}', 'teacherManageStudents')"><h6 class="mb-0 fw-bold text-success">${s.name || 'নাম নেই'}</h6><small class="text-muted">রোল: ${s.roll?toBanglaNum(s.roll):'---'} | পিন: ${s.loginPin||'---'}</small><br><small>পিতা: ${s.father || '---'}</small></div><div><button class="btn btn-sm btn-outline-warning me-1" onclick="openEditStudent('${s.id}')"><i class="fas fa-edit"></i></button><button class="btn btn-sm btn-outline-danger" onclick="deleteStudent('${s.id}')"><i class="fas fa-trash"></i></button></div></div>`; 
+            });
+        }
+        function deleteStudent(id) { customConfirm("নিশ্চিত মুছে ফেলতে চান?", () => { database.ref('students/' + id).remove().then(() => { customAlert("মুছে ফেলা হয়েছে।"); }); }); }
+        
+        function openEditStudent(id) {
+            let s = studentsData.find(x => x.id === id);
+            if(s) {
+                document.getElementById('edit_s_old_id_hidden').value = s.id; document.getElementById('edit_s_class_hidden').value = s.class;
+                document.getElementById('edit_s_id_input').value = s.roll || ''; document.getElementById('edit_s_name_teacher').value = s.name || ''; document.getElementById('edit_s_father_teacher').value = s.father || ''; document.getElementById('edit_s_father_prof_teacher').value = s.fatherProf || ''; document.getElementById('edit_s_mother_teacher').value = s.mother || ''; document.getElementById('edit_s_dob_teacher').value = s.dob || ''; document.getElementById('edit_s_gender_teacher').value = s.gender || 'ছাত্র'; document.getElementById('edit_s_religion_teacher').value = s.religion || 'ইসলাম'; document.getElementById('edit_s_blood_teacher').value = s.bloodGroup || ''; document.getElementById('edit_s_birth_cert_teacher').value = s.birthCert || ''; document.getElementById('edit_s_address_teacher').value = s.address || ''; document.getElementById('edit_s_per_address_teacher').value = s.perAddress || '';
+                if(s.transport === 'Yes') { document.querySelector('input[name="edit_s_transport"][value="Yes"]').checked = true; document.getElementById('edit_transport_loc_div').style.display = 'block'; document.getElementById('edit_s_transport_loc_teacher').value = s.transportLoc || ''; } else { document.querySelector('input[name="edit_s_transport"][value="No"]').checked = true; document.getElementById('edit_transport_loc_div').style.display = 'none'; document.getElementById('edit_s_transport_loc_teacher').value = ''; }
+                document.getElementById('edit_s_phone_teacher').value = s.phone || ''; showPage('teacherEditStudent');
+            }
+        }
+        function saveEditedStudent() {
+            let oldId = document.getElementById('edit_s_old_id_hidden').value; let newRoll = document.getElementById('edit_s_id_input').value.trim(); let std = studentsData.find(x => x.id === oldId);
+            if(std) {
+                if(newRoll !== "") std.roll = newRoll; 
+                std.name = document.getElementById('edit_s_name_teacher').value; std.father = document.getElementById('edit_s_father_teacher').value; std.fatherProf = document.getElementById('edit_s_father_prof_teacher').value; std.mother = document.getElementById('edit_s_mother_teacher').value; std.dob = document.getElementById('edit_s_dob_teacher').value; std.gender = document.getElementById('edit_s_gender_teacher').value; std.religion = document.getElementById('edit_s_religion_teacher').value; std.bloodGroup = document.getElementById('edit_s_blood_teacher').value; std.birthCert = document.getElementById('edit_s_birth_cert_teacher').value; std.address = document.getElementById('edit_s_address_teacher').value; std.perAddress = document.getElementById('edit_s_per_address_teacher').value; std.transport = document.querySelector('input[name="edit_s_transport"]:checked').value; std.transportLoc = document.getElementById('edit_s_transport_loc_teacher').value; std.phone = document.getElementById('edit_s_phone_teacher').value; if(uploadedImages['s_edit_preview']) { std.photo = uploadedImages['s_edit_preview']; }
+                database.ref('students/' + oldId).update(std).then(() => { customAlert("সংশোধন করা হয়েছে!"); showPage('teacherManageStudents'); uploadedImages['s_edit_preview'] = null; });
+            }
         }
 
         // Attendance 
@@ -839,50 +883,50 @@
         function handleTeacherDateChange() { renderTeacherStudentList(); }
         
         function renderTeacherStudentList() {
-            let className = document.getElementById('view_class_title').innerText;
-            let container = document.getElementById('student_list_container'); container.innerHTML = ''; 
-            let selDate = document.getElementById('teacher_att_date').value || getTodayISODate(); 
-            document.getElementById('teacher_att_date_display').innerText = toBanglaDate(selDate);
-            
-            let classStds = studentsData.filter(s => {
-                let dbClass = (s.class || "").replace(/\s/g, ""); 
-                let searchClass = className.replace(/\s/g, "");
-                return dbClass === searchClass;
-            });
-
+            let className = document.getElementById('view_class_title').innerText; let container = document.getElementById('student_list_container'); container.innerHTML = ''; let selDate = document.getElementById('teacher_att_date').value || getTodayISODate(); document.getElementById('teacher_att_date_display').innerText = toBanglaDate(selDate);
+            let classStds = studentsData.filter(s => (s.class || "").replace(/\s/g, "") === className.replace(/\s/g, ""));
             if(classStds.length === 0) { container.innerHTML = '<p class="text-muted text-center mt-3">এই ক্লাসে শিক্ষার্থী নেই</p>'; return; }
             classStds.forEach(s => {
                 let status = s.attendance ? s.attendance[selDate] : null; let attHtml = '';
                 if(isAttendanceMode) { 
                     let pC = status === 'Present' ? 'btn-present active' : 'btn-present'; let aC = status === 'Absent' ? 'btn-absent active' : 'btn-absent'; 
                     attHtml = `<div class="d-flex"><button class="btn btn-att ${pC}" onclick="markAttendance('${s.id}', '${selDate}', 'Present')"><i class="fas fa-check"></i></button><button class="btn btn-att ${aC}" onclick="markAttendance('${s.id}', '${selDate}', 'Absent')"><i class="fas fa-times"></i></button></div>`; 
-                } else { 
-                    attHtml = `<div class="text-end">${status === 'Present' ? '<span class="badge bg-success">উপস্থিত</span>' : (status === 'Absent' ? '<span class="badge bg-danger">অনুপস্থিত</span>' : '<span class="badge bg-secondary">বাকি</span>')}</div>`; 
-                }
-                container.innerHTML += `<div class="student-list-item border-left-blue"><div style="cursor:pointer; flex:1;" onclick="viewStudentProfile('${s.id}', 'teacherStudentList')"><h6 class="mb-0 fw-bold text-success">${s.name}</h6><small class="text-muted">রোল: ${toBanglaNum(s.roll)} | পিন: ${s.loginPin}</small></div>${attHtml}</div>`;
+                } else { attHtml = `<div class="text-end">${status === 'Present' ? '<span class="badge bg-success">উপস্থিত</span>' : (status === 'Absent' ? '<span class="badge bg-danger">অনুপস্থিত</span>' : '<span class="badge bg-secondary">বাকি</span>')}</div>`; }
+                container.innerHTML += `<div class="student-list-item border-left-blue"><div style="cursor:pointer; flex:1;" onclick="viewStudentProfile('${s.id}', 'teacherStudentList')"><h6 class="mb-0 fw-bold text-success">${s.name || 'নাম নেই'}</h6><small class="text-muted">রোল: ${s.roll?toBanglaNum(s.roll):'---'} | পিন: ${s.loginPin||'---'}</small></div>${attHtml}</div>`;
             });
         }
         function markAttendance(id, dateISO, status) { database.ref('students/' + id + '/attendance/' + dateISO).set(status).then(() => renderTeacherStudentList()); }
-        function searchAttList(val) { 
-            let query = val.toLowerCase(); 
-            document.querySelectorAll('#student_list_container .student-list-item').forEach(s => {
-                s.style.display = s.innerText.toLowerCase().includes(query) ? "flex" : "none";
-            }); 
-        }
+        function searchAttList(val) { let query = val.toLowerCase(); document.querySelectorAll('#student_list_container .student-list-item').forEach(s => { s.style.display = s.innerText.toLowerCase().includes(query) ? "flex" : "none"; }); }
 
-        // Lessons
+        // Lesson Management 
         function saveLesson() {
             let dateStr = document.getElementById('lesson_add_date').value; let cls = document.getElementById('lesson_class_select').value; let sub = document.getElementById('lesson_subject').value.trim(); let details = document.getElementById('lesson_details').value.trim();
             if(!dateStr || !cls || !sub || !details) { customAlert("তারিখ, ক্লাস, বিষয় এবং পড়ার বিবরণ দিতে হবে!"); return; }
             database.ref('lessons').push({ date: dateStr, class: cls, subject: sub, details: details, image: currentLessonImageBase64 }).then(() => { customAlert("পড়া সফলভাবে সংরক্ষণ করা হয়েছে!"); document.getElementById('lesson_subject').value = ""; document.getElementById('lesson_details').value = ""; document.getElementById('lesson_image_input').value = ""; document.getElementById('lesson_image_preview').style.display = "none"; currentLessonImageBase64 = ""; document.getElementById('lesson_search_date').value = dateStr; renderLessons(); });
         }
         function renderLessons() {
-            let filterClass = document.getElementById('view_lesson_class_select').value; let searchDate = document.getElementById('lesson_search_date').value; let container = document.getElementById('lesson_list_container'); if(!container) return; container.innerHTML = '';
-            if(searchDate) { document.getElementById('lesson_display_date_title').innerText = toBanglaDate(searchDate) + " এর পড়া"; }
-            let list = lessonsData.filter(l => l.date === searchDate && (filterClass === "All" || (l.class||"").replace(/\s/g,"") === filterClass.replace(/\s/g,"")));
+            let filterClass = document.getElementById('view_lesson_class_select').value; 
+            let searchDate = document.getElementById('lesson_search_date').value; 
+            let container = document.getElementById('lesson_list_container'); if(!container) return; container.innerHTML = '';
+            
+            if(searchDate) { document.getElementById('lesson_display_date_title').innerText = toBanglaDate(searchDate) + " এর পড়া"; } 
+            else { document.getElementById('lesson_display_date_title').innerText = "সকল পড়া"; }
+            
+            let list = lessonsData.filter(l => { 
+                let matchDate = !searchDate || (l.date || "").trim() === searchDate.trim(); 
+                let matchClass = filterClass === "All" || (l.class||"").replace(/\s/g,"") === filterClass.replace(/\s/g,""); 
+                return matchDate && matchClass; 
+            });
+            
             if(list.length === 0) { container.innerHTML = `<p class="text-center text-muted mt-3 mb-0">এই তারিখে কোনো পড়া পাওয়া যায়নি।</p>`; return; }
-            list.reverse().forEach(l => { let imgHtml = l.image ? `<img src="${l.image}" class="img-fluid mt-2 rounded border" style="max-height: 200px; width: 100%; object-fit: cover;">` : ''; container.innerHTML += `<div class="card bg-light border-0 mb-3 border-left-purple shadow-sm"><div class="card-body p-3"><div class="d-flex justify-content-between align-items-start mb-2"><span class="badge bg-purple" style="background-color: #9c27b0;">${l.class}</span><small class="text-muted fw-bold">${l.subject}</small></div><p class="mb-0 text-dark" style="font-size: 14px; line-height: 1.5;">${l.details}</p>${imgHtml}</div></div>`; });
+            
+            list.reverse().forEach(l => { 
+                let imgHtml = l.image ? `<img src="${l.image}" class="img-fluid mt-2 rounded border" style="max-height: 200px; width: 100%; object-fit: cover;">` : ''; 
+                let delBtn = `<button class="btn btn-sm text-danger w-100 border-top fw-bold mt-2 pt-2" onclick="deleteLesson('${l.key}')"><i class="fas fa-trash"></i> পড়া ডিলিট করুন</button>`;
+                container.innerHTML += `<div class="card bg-light border-0 mb-3 border-left-purple shadow-sm"><div class="card-body p-3"><div class="d-flex justify-content-between align-items-start mb-2"><span class="badge bg-purple" style="background-color: #9c27b0;">${l.class}</span><small class="text-muted fw-bold">${toBanglaDate(l.date)}</small></div><p class="text-muted mb-1 fw-bold" style="font-size:13px;">বিষয়: ${l.subject}</p><p class="mb-0 text-dark" style="font-size: 14px; line-height: 1.5;">${l.details}</p>${imgHtml}${delBtn}</div></div>`; 
+            });
         }
+        function deleteLesson(key) { customConfirm("পড়াটি মুছে ফেলতে চান?", () => { database.ref('lessons/' + key).remove(); }); }
 
         // Results
         function openExamResultPage(examName) { currentExamType = examName; document.getElementById('exam_page_title').innerText = examName; document.getElementById('exam_students_container').innerHTML = ""; showPage('examResultPage'); }
@@ -890,7 +934,7 @@
             let cls = document.getElementById('exam_class_select').value; let container = document.getElementById('exam_students_container'); container.innerHTML = ''; if(!cls) return;
             let list = studentsData.filter(s => (s.class || "").replace(/\s/g,"") === cls.replace(/\s/g,"")); if(list.length === 0) { container.innerHTML = `<p class="text-muted text-center mt-3">শিক্ষার্থী নেই।</p>`; return; }
             let html = `<table class="table table-bordered text-center"><thead style="background:#f0f0f0;"><tr><th>রোল</th><th>নাম</th><th>গ্রেড</th></tr></thead><tbody>`;
-            list.forEach(s => { html += `<tr><td class="align-middle">${toBanglaNum(s.roll)}</td><td class="text-start align-middle">${s.name}</td><td><input type="text" class="form-control text-center exam-mark-input fw-bold" data-std-id="${s.id}"></td></tr>`; });
+            list.forEach(s => { html += `<tr><td class="align-middle">${toBanglaNum(s.roll)}</td><td class="text-start align-middle">${s.name||'---'}</td><td><input type="text" class="form-control text-center exam-mark-input fw-bold" data-std-id="${s.id}"></td></tr>`; });
             html += `</tbody></table>`; container.innerHTML = html;
         }
         function saveExamResults() {
@@ -900,7 +944,7 @@
             if(!hasMarks) { customAlert("নম্বর দিন!"); return; } database.ref().update(updates).then(() => { customAlert("রেজাল্ট সেভ হয়েছে!"); showPage('teacherResultUpdate'); });
         }
 
-        // SMS Feature for Teacher
+        // SMS Only (No Inbox)
         function toggleSmsType() { let t = document.getElementById('sms_type_select').value; document.getElementById('sms_specific_div').style.display = t === 'class' ? 'none' : 'block'; }
         function filterSmsStudents(val) {
             let query = val.toLowerCase(); let cls = document.getElementById('sms_class_select').value; let sugBox = document.getElementById('sms_student_suggestions');
@@ -911,6 +955,7 @@
             else { sugBox.innerHTML = `<div class="list-group-item text-muted">শিক্ষার্থী পাওয়া যায়নি</div>`; sugBox.style.display = "block"; }
         }
         function selectSmsStudent(id, name) { document.getElementById('selected_target_student_id').value = id; document.getElementById('sms_specific_id').value = name; document.getElementById('sms_student_suggestions').style.display = "none"; let badge = document.getElementById('selected_student_badge'); badge.innerText = `সিলেক্ট করা হয়েছে: ${name}`; badge.style.display = "block"; }
+        
         function sendTeacherSMS() {
             let msg = document.getElementById('sms_message').value.trim(); let type = document.getElementById('sms_type_select').value; let specificId = document.getElementById('selected_target_student_id').value; let cls = document.getElementById('sms_class_select').value;
             if(msg === "") { customAlert("মেসেজ লিখুন!"); return; } if(type !== 'class' && specificId.trim() === "") { customAlert("শিক্ষার্থী সিলেক্ট করুন!"); return; }
@@ -918,44 +963,9 @@
             let smsId = 'msg_' + Date.now(); let updates = {}; let smsObj = { text: msg, date: getTodayISODate(), senderRole: 'teacher', senderName: senderName };
             if(specificId) { updates['students/' + specificId + '/messages/' + smsId] = smsObj; } 
             else { studentsData.forEach(s => { if((s.class||"").replace(/\s/g,"") === cls.replace(/\s/g,"")) { updates['students/' + s.id + '/messages/' + smsId] = smsObj; } }); }
-            database.ref().update(updates).then(() => { customAlert("মেসেজ সফলভাবে পাঠানো হয়েছে!"); document.getElementById('sms_message').value = ""; document.getElementById('sms_specific_id').value = ""; document.getElementById('selected_target_student_id').value = ""; document.getElementById('selected_student_badge').style.display = "none"; });
+            database.ref().update(updates).then(() => { customAlert("মেসেজ পাঠানো হয়েছে!"); document.getElementById('sms_message').value = ""; document.getElementById('sms_specific_id').value = ""; document.getElementById('selected_target_student_id').value = ""; document.getElementById('selected_student_badge').style.display = "none"; });
         }
 
-        // Teacher INBOX (Fixed Undefined and Unknown Class Bug)
-        function renderTeacherInbox() {
-            let container = document.getElementById('inbox_list_container'); if(!container) return; container.innerHTML = '';
-            
-            let badge = document.getElementById('inbox_badge');
-            if(badge) {
-                if(studentMessagesData.length > 0) { badge.innerText = toBanglaNum(studentMessagesData.length); badge.style.display = "inline-block"; }
-                else { badge.style.display = "none"; }
-            }
-
-            if(studentMessagesData.length === 0) { container.innerHTML = `<p class="text-center text-muted mb-0">ইনবক্সে কোনো মেসেজ নেই।</p>`; return; }
-            
-            [...studentMessagesData].reverse().forEach(msg => { 
-                let sName = msg.studentName || msg.name || "শিক্ষার্থী";
-                let sClass = msg.className || msg.class || msg.studentClass || "অজ্ঞাত ক্লাস";
-                let msgText = msg.text || msg.message || msg.msg || "কোনো মেসেজ নেই";
-                
-                container.innerHTML += `
-                <div class="card bg-light border-0 mb-3 border-left-purple shadow-sm">
-                    <div class="card-body p-3">
-                        <div class="d-flex justify-content-between mb-2">
-                            <span class="badge bg-purple" style="background-color: #e91e63;">${sName} (${sClass})</span>
-                            <small class="text-muted fw-bold">${msg.date ? toBanglaDate(msg.date) : ''}</small>
-                        </div>
-                        <p class="mb-3 text-dark" style="font-size: 14px; line-height: 1.5;">${msgText}</p>
-                        <button class="btn btn-sm btn-outline-danger w-100 fw-bold" onclick="deleteTeacherInboxMsg('${msg.key}')"><i class="fas fa-trash"></i> ডিলিট করুন</button>
-                    </div>
-                </div>`; 
-            });
-        }
-        function deleteTeacherInboxMsg(key) {
-            if(confirm("মেসেজটি মুছে ফেলতে চান?")) {
-                database.ref('messages_to_teachers/' + key).remove().then(() => { customAlert("মেসেজ মুছে ফেলা হয়েছে।"); });
-            }
-        }
     </script>
 </body>
 </html>
