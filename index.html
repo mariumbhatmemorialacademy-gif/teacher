@@ -590,11 +590,35 @@
 
             database.ref('headmaster').on('value', snap => { if(snap.exists()) headmasterData = { ...headmasterData, ...snap.val() }; });
             
-            // Fixed "teachers" folder load
-            database.ref('teachers').on('value', snap => { 
-                teachersData = []; if(snap.exists()) snap.forEach(child => teachersData.push(child.val())); 
-                localStorage.setItem('mb_teachers', JSON.stringify(teachersData)); 
-                if(typeof renderTeacherDirectory === 'function') renderTeacherDirectory(); 
+            // Fixed "teachers" folder load with ID injection
+            database.ref('teachers').on('value', snap => {
+                teachersData = [];
+                if(snap.exists()) {
+                    snap.forEach(child => {
+                        let d = child.val();
+                        if(typeof d === 'object') {
+                            d.id = child.key; // ID Fix 
+                            teachersData.push(d);
+                        }
+                    });
+                }
+                localStorage.setItem('mb_teachers', JSON.stringify(teachersData));
+                if(typeof renderTeacherDirectory === 'function') renderTeacherDirectory();
+            });
+
+            database.ref('staff').on('value', snap => {
+                staffData = [];
+                if(snap.exists()) {
+                    snap.forEach(child => {
+                        let d = child.val();
+                        if(typeof d === 'object') {
+                            d.id = child.key; // ID Fix
+                            staffData.push(d);
+                        }
+                    });
+                }
+                localStorage.setItem('mb_staff', JSON.stringify(staffData));
+                if(typeof renderTeacherDirectory === 'function') renderTeacherDirectory();
             });
             
             database.ref('staff').on('value', snap => { 
